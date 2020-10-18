@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit, AfterViewInit{
   mapStyles;
   coordsModel;
   data: any;
-  display = true;
+  detailView: boolean;
   mIcon = {
     path: google.maps.SymbolPath.CIRCLE,
     fillOpacity: 1,
