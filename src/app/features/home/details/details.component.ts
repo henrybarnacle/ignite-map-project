@@ -9,6 +9,7 @@ export class DetailsComponent implements OnInit {
   data: any;
 
   constructor() {
+    // mock data
     this.data = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
