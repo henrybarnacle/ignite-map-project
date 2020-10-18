@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit, AfterViewInit{
       position: new google.maps.LatLng(39.468739, -98.950631),
       map: this.map,
       title: 'Number 123',
+      content: `<div>Inbound</div><div>outbound</div>`,
       icon: this.mIcon,
       label: {color: '#FFF', fontSize: '12px', fontWeight: '600',
         text: '-23'}
@@ -84,7 +85,7 @@ export class HomeComponent implements OnInit, AfterViewInit{
       });
       // creating a new info window with markers info
       const infoWindow = new google.maps.InfoWindow({
-        content: marker.getTitle()
+        content: markerInfo.content
       });
 
       // Add click event to open info window on marker

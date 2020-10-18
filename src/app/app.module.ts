@@ -10,13 +10,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './features/home/home.component';
 import { DetailsComponent } from './features/home/details/details.component';
+import { SidebarComponent } from './features/sidebar/sidebar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DetailsComponent
+    DetailsComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
