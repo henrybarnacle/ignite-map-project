@@ -7,7 +7,15 @@ h3 {
   font-size: 20px;
   float: right;
   color: grey;
-  line-height: 16px;
+  border: 1px solid #D3D3D3;
+}
+.button-active {
+  color: whitesmoke !important;
+  background-color: #D3D3D3 !important;
+}
+.button-icon {
+  position: relative;
+  top: 2px;
 }
 .dots {
   padding-left: 10px;

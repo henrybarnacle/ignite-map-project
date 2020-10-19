@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit, AfterViewInit{
   coordsModel;
   data: any;
   detailView: boolean;
+  mapView: boolean;
+  tableView: boolean;
   mIcon = {
     path: google.maps.SymbolPath.CIRCLE,
     fillOpacity: 1,
@@ -62,9 +64,14 @@ export class HomeComponent implements OnInit, AfterViewInit{
   }
 
   ngOnInit(): void {
+    this.mapView = true;
   }
 
   ngAfterViewInit(): void {
+    this.loadMap();
+  }
+
+  loadMap(): void {
     const mapProperties = {
       center: new google.maps.LatLng(39.468739, -98.950631),
       zoom: 4.7,
@@ -75,6 +82,19 @@ export class HomeComponent implements OnInit, AfterViewInit{
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
     this.loadAllMarkers();
     this.setRegions();
+  }
+
+  showMap(): void {
+    this.tableView = false;
+    this.mapView = true;
+    setTimeout(() => {
+      this.loadMap();
+    }, 1000);
+  }
+
+  showTable(): void {
+    this.mapView = false;
+    this.tableView = true;
   }
 
   loadAllMarkers(): void {

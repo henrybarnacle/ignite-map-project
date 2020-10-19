@@ -8,14 +8,24 @@
   background-color: grey;
   overflow-x: hidden;
 }
-.sidebar-icon {
+.sidebar-icon-active {
   font-size: 22px;
   color: grey;
   position: relative;
   left: 25%;
   top: 25%;
 }
-.sidebar-icon-holder {
+.sidebar-icon {
+  font-size: 20px;
+  color: #BEBEBE;
+  position: relative;
+  left: 25%;
+  top: 25%;
+}
+.sidebar-icon-holder-active {
   height: 50px;
   background-color: #404040;
+}
+.sidebar-icon-holder {
+  height: 50px;
 }
