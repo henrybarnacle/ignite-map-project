@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit, AfterViewInit{
   mapStyles;
   coordsModel;
   data: any;
+  display: boolean;
   detailView: boolean;
   mapView: boolean;
   tableView: boolean;
@@ -96,7 +97,9 @@ export class HomeComponent implements OnInit, AfterViewInit{
     this.mapView = false;
     this.tableView = true;
   }
+  showFilters(): void {
 
+  }
   loadAllMarkers(): void {
     this.markers.forEach(markerInfo => {
       // Creating a new marker object

@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './features/home/home.component';
 import { DetailsComponent } from './features/home/details/details.component';
 import { SidebarComponent } from './features/sidebar/sidebar.component';
+import { AccordionModule } from 'primeng/accordion';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SidebarComponent } from './features/sidebar/sidebar.component';
     CardModule,
     ToolbarModule,
     SidebarModule,
-    PanelModule
+    PanelModule,
+    AccordionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
