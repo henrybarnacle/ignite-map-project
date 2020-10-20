@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {} from 'googlemaps';
 import { MapStylesModel } from './models/map-styles-model';
 import { CoordsModel } from './models/coords-model';
+import { DataModel } from './models/data-model';
 
 
 @Component({
@@ -16,18 +17,21 @@ export class HomeComponent implements OnInit, AfterViewInit{
   map: google.maps.Map;
   mapStyles;
   coordsModel;
+  dataModel;
   data: any;
   display: boolean;
   detailView: boolean;
   mapView: boolean;
   tableView: boolean;
+  testData = 'hello';
   mIcon = {
     path: google.maps.SymbolPath.CIRCLE,
     fillOpacity: 1,
-    fillColor: 'red',
+    fillColor: '#E80000',
     strokeOpacity: 1,
     strokeWeight: 1,
-    strokeColor: 'red',
+    strokeColor: '#E80000',
+    opacity: 0.6,
     scale: 18
   };
   mIcon2 = {
@@ -37,31 +41,16 @@ export class HomeComponent implements OnInit, AfterViewInit{
     strokeOpacity: 1,
     strokeWeight: 1,
     strokeColor: '#3CB371',
+    opacity: 0.6,
     scale: 18
   };
-  markers = [
-    {
-      position: new google.maps.LatLng(39.468739, -98.950631),
-      map: this.map,
-      title: 'Number 123',
-      content: `<div>Inbound</div><div>outbound</div>`,
-      icon: this.mIcon,
-      label: {color: '#FFF', fontSize: '12px', fontWeight: '600',
-        text: '-23'}
-    },
-    {
-      position: new google.maps.LatLng(43.469739, -92.951631),
-      map: this.map,
-      title: 'Number -12',
-      icon: this.mIcon2,
-      label: {color: '#FFF', fontSize: '12px', fontWeight: '600',
-        text: '12'}
-    }
-  ];
+
 
   constructor() {
     this.mapStyles = new MapStylesModel();
     this.coordsModel = new CoordsModel();
+    this.dataModel = new DataModel();
+    Window['homeComponent'] = this;
   }
 
   ngOnInit(): void {
@@ -101,22 +90,61 @@ export class HomeComponent implements OnInit, AfterViewInit{
 
   }
   loadAllMarkers(): void {
-    this.markers.forEach(markerInfo => {
-      // Creating a new marker object
+   const markers = [
+      {
+        position: new google.maps.LatLng(39.468739, -98.950631),
+        map: this.map,
+        title: 'Number 123',
+        content: `<div style="width:310px"><span style="padding-left:2.5%;font-size:22px;font-weight:bolder;float:left;width:80%">${this.dataModel.dataDTO[0].locationName}</span>
+                  <div style="width:42%;display:inline-block;padding:1%3%5%3%;float:left">
+                    <div style="width:100%;padding-top:5px;font-size:16px">Inbound</div>
+                    <div style="width:130px;padding-bottom:10px">
+                      <div style="margin-top:5px;width:121px;background:#3CB371;height:2px;float:left"></div>
+                      <div style="width:0;height:0;border-top:6px solid transparent;border-bottom: 6px solid transparent;border-left:9px solid #3CB371;float:right"></div>
+                    </div>
+                    <div style="width:100%;padding-top:5px">Empty Actual<div style="float:right;font-weight:bold">423</div></div>
+                    <div style="width:100%;padding-top:5px">Empty Projected<div style="float:right;font-weight:bold">554</div></div>
+                    <div style="width:100%;padding-top:5px">Loaded Actual<div style="float:right;font-weight:bold">224</div></div>
+                    <div style="width:100%;padding-top:5px">Loaded Projected<div style="float:right;font-weight:bold">124</div></div>
+                    <div style="width:55%;float:right;padding-top:10px;font-size:14px;font-weight:bold">Total 1562</div>
+                  </div>
+                  <div style="width:42%;display:inline-block;padding:1%3%5%3%;float:right">
+                    <div style="width:100%;padding-top:5px;font-size:16px">Outbound</div>
+                    <div style="width:130px;padding-bottom:10px">
+                      <div style="margin-top:5px;width:121px;background:#E80000;height:2px;float:left"></div>
+                      <div style="width:0;height:0;border-top:6px solid transparent;border-bottom: 6px solid transparent;border-left:9px solid #E80000;float:right"></div>
+                    </div>
+                    <div style="width:100%;padding-top:5px">Empty Actual<div style="float:right;font-weight:bold">764</div></div>
+                    <div style="width:100%;padding-top:5px">Empty Projected<div style="float:right;font-weight:bold">754</div></div>
+                    <div style="width:100%;padding-top:5px">Loaded Actual<div style="float:right;font-weight:bold">234</div></div>
+                    <div style="width:100%;padding-top:5px">Loaded Projected<div style="float:right;font-weight:bold">123</div></div>
+                    <div style="width:55%;float:right;padding-top:10px;font-size:14px;font-weight:bold">Total 1343</div>
+                  </div>
+                  <span style="float:right;padding-right:2%"><button style="background-color:#236093;color:white;border:none;border-radius:6px;height:25px" onclick="Window.homeComponent.showDetails()">Details</button></span>
+                  </div>`,
+        icon: this.mIcon,
+        label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
+          text: '-54'}
+      },
+      {
+        position: new google.maps.LatLng(43.469739, -92.951631),
+        map: this.map,
+        title: 'Number -12',
+        icon: this.mIcon2,
+        label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
+          text: '+120'}
+      }
+    ];
+   markers.forEach(markerInfo => {
       const marker = new google.maps.Marker({
         ...markerInfo
       });
-      // creating a new info window with markers info
       const infoWindow = new google.maps.InfoWindow({
         content: markerInfo.content
       });
-
-      // Add click event to open info window on marker
       marker.addListener('click', () => {
         infoWindow.open(marker.getMap(), marker);
       });
-
-      // Adding marker to google map
       marker.setMap(this.map);
     });
   }
@@ -185,6 +213,10 @@ export class HomeComponent implements OnInit, AfterViewInit{
   southCentral.setMap(this.map);
   northEast.setMap(this.map);
   southEast.setMap(this.map);
+  }
+
+  showDetails(): void {
+    this.detailView = !this.detailView;
   }
 
 

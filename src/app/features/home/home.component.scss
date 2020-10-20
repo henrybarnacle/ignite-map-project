@@ -16,7 +16,7 @@ h3 {
 .button-icon {
   position: relative;
   top: 2px;
-  font-size: 16px;
+  font-size: 22px;
 }
 .dots {
   padding-left: 10px;
@@ -66,7 +66,7 @@ h3 {
 }
 .map-container {
   height: 80vh;
-  width: 90%;
+  width: 95%;
   margin-top: 20px;
   margin-left: 60px;
 }
@@ -74,10 +74,39 @@ h3 {
   padding: 10px;
   background-color: white;
 }
+.map-detail {
+  height: 300px !important;
+}
 .breadcrumb-text {
   font-size: 14px;
   color: grey;
 }
+.filters-panel {
+  background-color: white;
+}
+
+
+.arrow {
+  width: 120px;
+}
+
+.line {
+  margin-top: 14px;
+  width: 90px;
+  background: blue;
+  height: 10px;
+  float: left;
+}
+
+.point {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 30px solid blue;
+  float: right;
+}
+
 .one {
   background-color: red;
   display: block;

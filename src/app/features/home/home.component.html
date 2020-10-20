@@ -1,18 +1,4 @@
 <app-sidebar></app-sidebar>
-<p-sidebar [(visible)]="display" position="right">
-  <div>Title</div>
-  <p-accordion>
-    <p-accordionTab header="Header 1">
-      Content 1
-    </p-accordionTab>
-    <p-accordionTab header="Header 2">
-      Content 2
-    </p-accordionTab>
-    <p-accordionTab header="Header 3">
-      Content 3
-    </p-accordionTab>
-  </p-accordion>
-</p-sidebar>
   <div class="map-container">
     <div class="p-col-12">
       <div class="breadcrumb-text"><span>Capacity Mapping</span><i class="pi pi-chevron-right" style="font-size: 0.75rem; padding: 4px"></i><span>Dashboard</span></div>
@@ -52,7 +38,7 @@
                 <path fill-rule="evenodd" d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98l4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z"/>
               </svg>
             </button>
-              <button class="p-button-outlined button-size">
+              <button class="p-button-outlined button-size" (click)="showDetails()">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list-ul button-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
                 </svg>
@@ -62,14 +48,17 @@
           </div>
       </div>
       <div class="p-card-content">
+<!-- map view-->
         <div *ngIf="mapView" class="p-grid">
           <div class="p-col-12 map-section">
-            <div #map style="width:100%;height:500px"></div>
+            <div [ngClass]="{'map-detail': detailView}" #map style="width:100%;height:500px"></div>
+            <div *ngIf="detailView" class="p-col-12">
+              <app-details></app-details>
+            </div>
           </div>
-          <div *ngIf="detailView" class="p-col-12">
-            <app-details></app-details>
-          </div>
+
         </div>
+<!-- table view-->
         <div *ngIf="tableView" class="p-grid">
           <div class="p-col-12">
           Table view
@@ -78,3 +67,19 @@
       </div>
     </p-panel>
 </div>
+
+<!-- filters-->
+<p-sidebar [(visible)]="display" position="right">
+  <div>Filters</div>
+  <p-accordion>
+    <p-accordionTab header="Header 1">
+      Content 1
+    </p-accordionTab>
+    <p-accordionTab header="Header 2">
+      Content 2
+    </p-accordionTab>
+    <p-accordionTab header="Header 3">
+      Content 3
+    </p-accordionTab>
+  </p-accordion>
+</p-sidebar>
