@@ -12,6 +12,7 @@ import { HomeComponent } from './features/home/home.component';
 import { DetailsComponent } from './features/home/details/details.component';
 import { SidebarComponent } from './features/sidebar/sidebar.component';
 import { AccordionModule } from 'primeng/accordion';
+import { RampInfoComponent } from './features/home/ramp-info/ramp-info.component';
 
 
 @NgModule({
@@ -19,8 +20,10 @@ import { AccordionModule } from 'primeng/accordion';
     AppComponent,
     HomeComponent,
     DetailsComponent,
-    SidebarComponent
-  ],
+    SidebarComponent,
+    RampInfoComponent ],
+  entryComponents: [
+    RampInfoComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

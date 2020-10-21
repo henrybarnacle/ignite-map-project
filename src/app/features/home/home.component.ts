@@ -1,20 +1,29 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {
+  AfterViewInit, Component, OnInit, ViewChild,
+  NgModule, Injector, ApplicationRef, ComponentFactoryResolver,
+  NgZone, ElementRef, ComponentRef, OnDestroy
+} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import {} from 'googlemaps';
 import { MapStylesModel } from './models/map-styles-model';
 import { CoordsModel } from './models/coords-model';
 import { DataModel } from './models/data-model';
-
+import { RampInfoComponent } from './ramp-info/ramp-info.component';
+import { RampInfoService } from './services/ramp-info.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, AfterViewInit{
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
 
-  @ViewChild('map') mapElement: any;
+  @ViewChild('map') mapElement: ElementRef;
 
   map: google.maps.Map;
+  infoWindow: any;
+  compRef: ComponentRef<RampInfoComponent>;
+
   mapStyles;
   coordsModel;
   dataModel;
@@ -23,7 +32,7 @@ export class HomeComponent implements OnInit, AfterViewInit{
   detailView: boolean;
   mapView: boolean;
   tableView: boolean;
-  testData = 'hello';
+  infoWindows: any[] = [];
   mIcon = {
     path: google.maps.SymbolPath.CIRCLE,
     fillOpacity: 1,
@@ -44,9 +53,33 @@ export class HomeComponent implements OnInit, AfterViewInit{
     opacity: 0.6,
     scale: 18
   };
+  markers = [
+    {
+      position: new google.maps.LatLng(39.468739, -98.950631),
+      map: this.map,
+      title: 'Number 123',
+      content: 'pass this data',
+      icon: this.mIcon,
+      label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
+        text: '-54'}
+    },
+    {
+      position: new google.maps.LatLng(43.469739, -92.951631),
+      map: this.map,
+      title: 'Number -12',
+      content: 'pass this other data',
+      icon: this.mIcon2,
+      label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
+        text: '+120'}
+    }
+  ];
 
 
-  constructor() {
+  constructor(private injector: Injector,
+              private resolver: ComponentFactoryResolver,
+              private appRef: ApplicationRef,
+              private zone: NgZone,
+              private rampInfoService: RampInfoService) {
     this.mapStyles = new MapStylesModel();
     this.coordsModel = new CoordsModel();
     this.dataModel = new DataModel();
@@ -74,6 +107,26 @@ export class HomeComponent implements OnInit, AfterViewInit{
     this.setRegions();
   }
 
+  onMarkerClick(marker, e): void {
+    this.rampInfoService.shareData(marker.content);
+    if (this.compRef) {
+      this.compRef.destroy();
+    }
+    const compFactory = this.resolver.resolveComponentFactory(RampInfoComponent);
+    this.compRef = compFactory.create(this.injector);
+    this.appRef.attachView(this.compRef.hostView);
+    const div = document.createElement('div');
+    div.appendChild(this.compRef.location.nativeElement);
+    this.infoWindow.setContent(div);
+    this.infoWindow.open(this.map, marker);
+  }
+
+  ngOnDestroy(): void {
+    if (this.compRef) {
+      this.compRef.destroy();
+    }
+  }
+
   showMap(): void {
     this.tableView = false;
     this.mapView = true;
@@ -86,67 +139,25 @@ export class HomeComponent implements OnInit, AfterViewInit{
     this.mapView = false;
     this.tableView = true;
   }
+
   showFilters(): void {
 
   }
+
   loadAllMarkers(): void {
-   const markers = [
-      {
-        position: new google.maps.LatLng(39.468739, -98.950631),
-        map: this.map,
-        title: 'Number 123',
-        content: `<div style="width:310px"><span style="padding-left:2.5%;font-size:22px;font-weight:bolder;float:left;width:80%">${this.dataModel.dataDTO[0].locationName}</span>
-                  <div style="width:42%;display:inline-block;padding:1%3%5%3%;float:left">
-                    <div style="width:100%;padding-top:5px;font-size:16px">Inbound</div>
-                    <div style="width:130px;padding-bottom:10px">
-                      <div style="margin-top:5px;width:121px;background:#3CB371;height:2px;float:left"></div>
-                      <div style="width:0;height:0;border-top:6px solid transparent;border-bottom: 6px solid transparent;border-left:9px solid #3CB371;float:right"></div>
-                    </div>
-                    <div style="width:100%;padding-top:5px">Empty Actual<div style="float:right;font-weight:bold">423</div></div>
-                    <div style="width:100%;padding-top:5px">Empty Projected<div style="float:right;font-weight:bold">554</div></div>
-                    <div style="width:100%;padding-top:5px">Loaded Actual<div style="float:right;font-weight:bold">224</div></div>
-                    <div style="width:100%;padding-top:5px">Loaded Projected<div style="float:right;font-weight:bold">124</div></div>
-                    <div style="width:55%;float:right;padding-top:10px;font-size:14px;font-weight:bold">Total 1562</div>
-                  </div>
-                  <div style="width:42%;display:inline-block;padding:1%3%5%3%;float:right">
-                    <div style="width:100%;padding-top:5px;font-size:16px">Outbound</div>
-                    <div style="width:130px;padding-bottom:10px">
-                      <div style="margin-top:5px;width:121px;background:#E80000;height:2px;float:left"></div>
-                      <div style="width:0;height:0;border-top:6px solid transparent;border-bottom: 6px solid transparent;border-left:9px solid #E80000;float:right"></div>
-                    </div>
-                    <div style="width:100%;padding-top:5px">Empty Actual<div style="float:right;font-weight:bold">764</div></div>
-                    <div style="width:100%;padding-top:5px">Empty Projected<div style="float:right;font-weight:bold">754</div></div>
-                    <div style="width:100%;padding-top:5px">Loaded Actual<div style="float:right;font-weight:bold">234</div></div>
-                    <div style="width:100%;padding-top:5px">Loaded Projected<div style="float:right;font-weight:bold">123</div></div>
-                    <div style="width:55%;float:right;padding-top:10px;font-size:14px;font-weight:bold">Total 1343</div>
-                  </div>
-                  <span style="float:right;padding-right:2%"><button style="background-color:#236093;color:white;border:none;border-radius:6px;height:25px" onclick="Window.homeComponent.showDetails()">Details</button></span>
-                  </div>`,
-        icon: this.mIcon,
-        label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
-          text: '-54'}
-      },
-      {
-        position: new google.maps.LatLng(43.469739, -92.951631),
-        map: this.map,
-        title: 'Number -12',
-        icon: this.mIcon2,
-        label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
-          text: '+120'}
-      }
-    ];
-   markers.forEach(markerInfo => {
+   this.markers.forEach(markerInfo => {
       const marker = new google.maps.Marker({
         ...markerInfo
       });
-      const infoWindow = new google.maps.InfoWindow({
-        content: markerInfo.content
-      });
-      marker.addListener('click', () => {
-        infoWindow.open(marker.getMap(), marker);
-      });
+      marker.addListener('click', (e) => {
+       this.zone.run(() => this.onMarkerClick(marker, e));
+     });
       marker.setMap(this.map);
-    });
+   });
+   this.infoWindow = new google.maps.InfoWindow();
+   this.infoWindow.addListener('closeclick', _ => {
+     this.compRef.destroy();
+   });
   }
 
   setRegions(): void {
@@ -216,8 +227,8 @@ export class HomeComponent implements OnInit, AfterViewInit{
   }
 
   showDetails(): void {
+    this.infoWindow.close();
     this.detailView = !this.detailView;
   }
-
 
 }
