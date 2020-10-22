@@ -23,16 +23,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   map: google.maps.Map;
   infoWindow: any;
   compRef: ComponentRef<RampInfoComponent>;
-
   mapStyles;
   coordsModel;
   dataModel;
   data: any;
-  display: boolean;
+  displayFilters: boolean;
+  displayReposition: boolean;
   detailView: boolean;
   mapView: boolean;
   tableView: boolean;
-  infoWindows: any[] = [];
+
   mIcon = {
     path: google.maps.SymbolPath.CIRCLE,
     fillOpacity: 1,
@@ -58,7 +58,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       position: new google.maps.LatLng(39.468739, -98.950631),
       map: this.map,
       title: 'Number 123',
-      content: 'pass this data',
+      content: {
+        igniteZoneRampName: 'Kansas City',
+        emptyActualCount: 123,
+        loadedActualCount: 443,
+        loadedprojectedCount: 222,
+        emptyProjectedCount: 76
+      },
       icon: this.mIcon,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
         text: '-54'}
@@ -67,7 +73,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       position: new google.maps.LatLng(43.469739, -92.951631),
       map: this.map,
       title: 'Number -12',
-      content: 'pass this other data',
+      content: {
+        igniteZoneRampName: 'Cedar Rapids',
+        emptyActualCount: 163,
+        loadedActualCount: 743,
+        loadedprojectedCount: 154,
+        emptyProjectedCount: 336
+      },
       icon: this.mIcon2,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
         text: '+120'}
@@ -229,6 +241,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   showDetails(): void {
     this.infoWindow.close();
     this.detailView = !this.detailView;
+  }
+
+  onShowPositionRequest(event): void {
+    this.displayReposition = true;
   }
 
 }

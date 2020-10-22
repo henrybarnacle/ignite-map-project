@@ -70,6 +70,7 @@ h3 {
   margin-top: 20px;
   margin-left: 60px;
 }
+
 .map-section {
   padding: 10px;
   background-color: white;
@@ -77,14 +78,15 @@ h3 {
 .map-detail {
   height: 300px !important;
 }
+
 .breadcrumb-text {
   font-size: 14px;
   color: grey;
 }
+
 .filters-panel {
   background-color: white;
 }
-
 
 .arrow {
   width: 120px;
@@ -106,15 +108,50 @@ h3 {
   border-left: 30px solid blue;
   float: right;
 }
-
-.one {
-  background-color: red;
-  display: block;
-  z-index: 9000;
+.chart-detail-view {
+  float: right;
 }
 
-.two {
-  background-color: green;
+::ng-deep .p-sidebar-right{
+  width: 25rem !important;
 }
+
+.reposition-button {
+  background: white;
+  color: grey;
+  float: right;
+  border: none;
+  font-size: 1.75em;
+}
+
+.reposition-title {
+  position: relative;
+  font-size: 24px;
+  font-weight: bolder;
+  height:80px;
+  margin:15px;
+  letter-spacing: 2.5px;
+}
+.p-col-6 {
+  width: 50%;
+  display: inline-block;
+}
+.reposition-content {
+  height: 100%;
+  width: 100%;
+  background: white !important;
+  position: relative;
+  top: 0;
+}
+.reposition-item {
+  height:60px;
+  width:90%;
+  background: whitesmoke;
+  border-radius: 7px;
+  margin-bottom:5px;
+  position: relative;
+  left: 2%;
+}
+
 
 

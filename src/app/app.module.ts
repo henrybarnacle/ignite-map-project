@@ -13,6 +13,7 @@ import { DetailsComponent } from './features/home/details/details.component';
 import { SidebarComponent } from './features/sidebar/sidebar.component';
 import { AccordionModule } from 'primeng/accordion';
 import { RampInfoComponent } from './features/home/ramp-info/ramp-info.component';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { RampInfoComponent } from './features/home/ramp-info/ramp-info.component
     ToolbarModule,
     SidebarModule,
     PanelModule,
-    AccordionModule
+    AccordionModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

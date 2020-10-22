@@ -18,7 +18,7 @@
                   </svg>
             </span>
             <div class="button-holder p-col-3">
-              <div class="filter-icon" (click)="display = true">
+              <div class="filter-icon" (click)="displayFilters = true">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-funnel-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
                 </svg>
@@ -53,7 +53,7 @@
           <div class="p-col-12 map-section">
             <div [ngClass]="{'map-detail': detailView}" #map style="width:100%;height:500px"></div>
             <div *ngIf="detailView" class="p-col-12">
-              <app-details></app-details>
+                <app-details (showPositionRequest)="onShowPositionRequest($event)"></app-details>
             </div>
           </div>
 
@@ -67,9 +67,8 @@
       </div>
     </p-panel>
 </div>
-
 <!-- filters-->
-<p-sidebar [(visible)]="display" position="right">
+<p-sidebar [(visible)]="displayFilters" position="right">
   <div>Filters</div>
   <p-accordion>
     <p-accordionTab header="Header 1">
@@ -82,4 +81,28 @@
       Content 3
     </p-accordionTab>
   </p-accordion>
+</p-sidebar>
+<!--Reposition overlay-->
+<p-sidebar [(visible)]="displayReposition" position="right"
+            class="reposition-overlay reposition-sidebar">
+
+  <div class="reposition-content">
+
+    <div class="p-grid">
+        <div class="p-col-6">
+          <div class="reposition-title">REPOSITION</div>
+        </div>
+        <div class="p-col-6">
+          <button class="reposition-button"><i class="pi pi-times"></i></button>
+        </div>
+      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+    </div>
+  </div>
 </p-sidebar>

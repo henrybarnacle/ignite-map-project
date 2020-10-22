@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-details',
@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class DetailsComponent implements OnInit {
   data: any;
   options: any;
+  @Output() showPositionRequest: EventEmitter<any> = new EventEmitter();
   constructor() {
     // mock data
     this.data = {
@@ -20,7 +21,7 @@ export class DetailsComponent implements OnInit {
           borderColor: 'red',
           pointRadius: 0,
           fill: false,
-          data: [2000, 3000, 4000, 1000, 2000, 3000, 2000, 2000, 3000, 4000, 1000, 2000, 3000, 2000]
+          data: [2000, 3000, 4000, 1000, 2000, 3000, 2000, 2000, 3000, 4000, 1000, 2000, 3000, 2000, 5000]
         },
         {
           label: 'Second Dataset',
@@ -28,7 +29,7 @@ export class DetailsComponent implements OnInit {
           borderColor: '#3CB371',
           pointRadius: 0,
           fill: false,
-          data: [1000, 2000, 1000, 3000, 4000, 2000, 1000, 1000, 2000, 1000, 3000, 4000, 2000, 1000]
+          data: [1000, 2000, 1000, 3000, 4000, 2000, 1000, 1000, 2000, 1000, 3000, 4000, 2000, 1000, 5000]
         }
       ]
     };
@@ -47,6 +48,10 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onShowPositionRequest(event: any): void {
+    this.showPositionRequest.emit(event);
   }
 
 }

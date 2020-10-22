@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { RampInfoService } from '../services/ramp-info.service';
 
 @Component({
@@ -8,6 +8,10 @@ import { RampInfoService } from '../services/ramp-info.service';
 })
 export class RampInfoComponent implements OnInit {
   data: any;
+  buttonToggle: boolean;
+  @Input() detailsView: boolean;
+  @Output() showPositionRequest: EventEmitter<any> = new EventEmitter();
+
 
   constructor(private rampInfoService: RampInfoService) { }
 
@@ -17,4 +21,7 @@ export class RampInfoComponent implements OnInit {
     });
   }
 
+  showReposition(event): void {
+    this.showPositionRequest.emit(event);
+  }
 }

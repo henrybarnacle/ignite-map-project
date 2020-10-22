@@ -1,3 +1,7 @@
-<div class="p-col-12 chart-container">
-<p-chart type="line" [data]="data" [options]="options" width="60vw" height="25vh"></p-chart>
+<div class="p-col-5 chart-container">
+  <p-chart type="line" [data]="data" [options]="options" width="60vw" height="25vh"></p-chart>
 </div>
+<div class="p-col-5 chart-detail-view">
+  <app-ramp-info [detailsView]="true" (showPositionRequest)="onShowPositionRequest($event)"></app-ramp-info>
+</div>
+
