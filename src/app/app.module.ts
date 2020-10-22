@@ -14,6 +14,7 @@ import { SidebarComponent } from './features/sidebar/sidebar.component';
 import { AccordionModule } from 'primeng/accordion';
 import { RampInfoComponent } from './features/home/ramp-info/ramp-info.component';
 import { ButtonModule } from 'primeng/button';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ButtonModule } from 'primeng/button';
     SidebarModule,
     PanelModule,
     AccordionModule,
-    ButtonModule
+    ButtonModule,
+    ScrollPanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]

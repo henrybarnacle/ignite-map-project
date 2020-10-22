@@ -87,22 +87,25 @@
             class="reposition-overlay reposition-sidebar">
 
   <div class="reposition-content">
-
     <div class="p-grid">
         <div class="p-col-6">
           <div class="reposition-title">REPOSITION</div>
         </div>
         <div class="p-col-6">
-          <button class="reposition-button"><i class="pi pi-times"></i></button>
+          <button (click)="displayReposition = false" class="reposition-button"><i class="pi pi-times"></i></button>
         </div>
-      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
-      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
-      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
-      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
-      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
-      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
-      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
-      <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+      <p-scrollPanel [style]="{width: '100%', height: '50vh'}">
+        <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+        <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+        <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+        <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+        <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+        <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+        <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+        <div class="p-col-12 reposition-item">invdiidcdjccd</div>
+      </p-scrollPanel>
+      <div class="p-col-12 reposition-item-selected">invdiidcdjccd</div>
     </div>
+    <button class="reposition-submit">Submit</button>
   </div>
 </p-sidebar>
