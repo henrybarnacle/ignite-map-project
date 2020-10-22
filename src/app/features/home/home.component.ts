@@ -80,6 +80,81 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
         loadedprojectedCount: 154,
         emptyProjectedCount: 336
       },
+      icon: this.mIcon,
+      label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
+        text: '+120'}
+    },
+    {
+      position: new google.maps.LatLng(47.626738, -121.982783),
+      map: this.map,
+      title: 'Number -12',
+      content: {
+        igniteZoneRampName: 'Cedar Rapids',
+        emptyActualCount: 163,
+        loadedActualCount: 743,
+        loadedprojectedCount: 154,
+        emptyProjectedCount: 336
+      },
+      icon: this.mIcon,
+      label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
+        text: '+120'}
+    },
+    {
+      position: new google.maps.LatLng(33.859271, -117.720087),
+      map: this.map,
+      title: 'Number -12',
+      content: {
+        igniteZoneRampName: 'Cedar Rapids',
+        emptyActualCount: 163,
+        loadedActualCount: 743,
+        loadedprojectedCount: 154,
+        emptyProjectedCount: 336
+      },
+      icon: this.mIcon2,
+      label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
+        text: '+120'}
+    },
+    {
+      position: new google.maps.LatLng(41.728512, -87.749386),
+      map: this.map,
+      title: 'Number -12',
+      content: {
+        igniteZoneRampName: 'Cedar Rapids',
+        emptyActualCount: 163,
+        loadedActualCount: 743,
+        loadedprojectedCount: 154,
+        emptyProjectedCount: 336
+      },
+      icon: this.mIcon,
+      label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
+        text: '+120'}
+    },
+    {
+      position: new google.maps.LatLng(32.609565, -96.626339),
+      map: this.map,
+      title: 'Number -12',
+      content: {
+        igniteZoneRampName: 'Cedar Rapids',
+        emptyActualCount: 163,
+        loadedActualCount: 743,
+        loadedprojectedCount: 154,
+        emptyProjectedCount: 336
+      },
+      icon: this.mIcon2,
+      label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
+        text: '+120'}
+    },
+    {
+      position: new google.maps.LatLng(45.773487, -108.293819),
+      map: this.map,
+      title: 'Number -12',
+      content: {
+        igniteZoneRampName: 'Cedar Rapids',
+        emptyActualCount: 163,
+        loadedActualCount: 743,
+        loadedprojectedCount: 154,
+        emptyProjectedCount: 336
+      },
       icon: this.mIcon2,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
         text: '+120'}
@@ -241,8 +316,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   showDetails(): void {
     this.infoWindow.close();
     this.detailView = !this.detailView;
-  }
+    setTimeout(() => {
+      const scrollingElement = (document.scrollingElement || document.body);
+      scrollingElement.scrollTop = scrollingElement.scrollHeight;
+    }, 100);
 
+  }
   onShowPositionRequest(event): void {
     this.displayReposition = true;
   }
