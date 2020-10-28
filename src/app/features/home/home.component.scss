@@ -75,6 +75,10 @@ h3 {
   padding: 10px;
   background-color: white;
 }
+.detail-section {
+  background: whitesmoke;
+  margin-top: 1%;
+}
 .map-detail {
   height: 300px !important;
 }
@@ -151,23 +155,69 @@ h3 {
   top: 0;
 }
 .reposition-item {
-  height:60px;
-  width:100%;
+  height: 70px;
+  width: 95%;
   background: whitesmoke;
   border-radius: 7px;
-  margin-bottom:8px;
+  margin-bottom: 8px;
   position: relative;
-  left: 2%;
+  left: 5%;
+}
+.reposition-item-location {
+  font-size: 12px;
+  font-weight: bold;
+  color: grey;
+  margin: 10px 0 0 10px;
+  padding: 5px 0 0 5px;
+}
+.resposition-item-data {
+  width: 14%;
+  display: inline-block;
+  margin-left: 10px;
+}
+.resposition-item-datapoint {;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  padding-left: 5px;
+}
+.resposition-item-data-label {
+  font-size: 10px;
+  font-weight: bold;
+  color: grey;
+  padding-left: 5px;
+}
+.resposition-input-container {
+  position: relative;
+  bottom: 10%;
+  width: 14%;
+  height: 100%;
+  display: inline-block;
+  margin-left: 40px;
+  padding: 10px 10px 10px 10px;
+}
+ .resposition-input-container-selected {
+   left: 17%;
+ }
+.resposition-input {
+  width: 80%;
+  height: 30%;
+  border: 1px #D3D3D3 solid;
+  border-radius: 5px;
 }
 .reposition-item-selected {
-  height: 60px;
-  width: 96%;
+  height: 70px;
+  width: 91%;
   background: lightgray;
   border-radius: 7px;
   margin-bottom: 10px;
   margin-top: 30px;
   position: relative;
-  left: 2%;
+  left: 5%;
+}
+.detail-close {
+  position: relative;
+  bottom: 10px;
 }
 
 

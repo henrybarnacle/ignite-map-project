@@ -15,7 +15,9 @@ import { AccordionModule } from 'primeng/accordion';
 import { RampInfoComponent } from './features/home/ramp-info/ramp-info.component';
 import { ButtonModule } from 'primeng/button';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
-
+import { HttpClientModule } from '@angular/common/http';
+import { CapaciyTableComponent } from './features/capaciy-table/capaciy-table.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -23,11 +25,13 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     HomeComponent,
     DetailsComponent,
     SidebarComponent,
-    RampInfoComponent ],
+    RampInfoComponent,
+    CapaciyTableComponent ],
   entryComponents: [
     RampInfoComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     ChartModule,
@@ -37,7 +41,8 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     PanelModule,
     AccordionModule,
     ButtonModule,
-    ScrollPanelModule
+    ScrollPanelModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
