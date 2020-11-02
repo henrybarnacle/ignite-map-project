@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   infoWindow: any;
   compRef: ComponentRef<RampInfoComponent>;
   mapStyles;
-  curvature = 0.3;
+  curvature = 0.2;
   curveMarkers;
   coordsModel;
   dataModel;
@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   };
   markers = [
     {
-      position: new google.maps.LatLng(39.468739, -98.950631),
+      position: new google.maps.LatLng(39.468739, -92.950631),
       map: this.map,
       id: 1,
       title: 'Number 123',
@@ -73,16 +73,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
         text: '-54'}
     },
     {
-      position: new google.maps.LatLng(43.469739, -92.951631),
+      position: new google.maps.LatLng(40.469739, -75.951631),
       map: this.map,
       title: 'Number -12',
       id: 2,
       content: {
         igniteZoneRampName: 'Cedar Rapids',
-        emptyActualCount: 163,
+        emptyActualCount: 763,
         loadedActualCount: 743,
-        loadedprojectedCount: 154,
-        emptyProjectedCount: 336
+        loadedprojectedCount: 754,
+        emptyProjectedCount: 736
       },
       icon: this.mIcon,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
@@ -94,10 +94,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       title: 'Number -12',
       id: 3,
       content: {
-        igniteZoneRampName: 'Cedar Rapids',
+        igniteZoneRampName: 'Seattle',
         emptyActualCount: 163,
-        loadedActualCount: 743,
-        loadedprojectedCount: 154,
+        loadedActualCount: 213,
+        loadedprojectedCount: 851,
         emptyProjectedCount: 336
       },
       icon: this.mIcon,
@@ -110,27 +110,27 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       title: 'Number -12',
       id: 4,
       content: {
-        igniteZoneRampName: 'Cedar Rapids',
-        emptyActualCount: 163,
-        loadedActualCount: 743,
-        loadedprojectedCount: 154,
-        emptyProjectedCount: 336
+        igniteZoneRampName: 'Omaha',
+        emptyActualCount: 301,
+        loadedActualCount: 663,
+        loadedprojectedCount: 252,
+        emptyProjectedCount: 36
       },
       icon: this.mIcon2,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
         text: '+120'}
     },
     {
-      position: new google.maps.LatLng(41.728512, -87.749386),
+      position: new google.maps.LatLng(46.728512, -87.749386),
       map: this.map,
       title: 'Number -12',
       id: 5,
       content: {
-        igniteZoneRampName: 'Cedar Rapids',
-        emptyActualCount: 163,
-        loadedActualCount: 743,
-        loadedprojectedCount: 154,
-        emptyProjectedCount: 336
+        igniteZoneRampName: 'Dallas',
+        emptyActualCount: 888,
+        loadedActualCount: 742,
+        loadedprojectedCount: 110,
+        emptyProjectedCount: 236
       },
       icon: this.mIcon,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
@@ -142,11 +142,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       title: 'Number -12',
       id: 6,
       content: {
-        igniteZoneRampName: 'Cedar Rapids',
-        emptyActualCount: 163,
-        loadedActualCount: 743,
-        loadedprojectedCount: 154,
-        emptyProjectedCount: 336
+        igniteZoneRampName: 'Detroit',
+        emptyActualCount: 123,
+        loadedActualCount: 143,
+        loadedprojectedCount: 155,
+        emptyProjectedCount: 556
       },
       icon: this.mIcon2,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
@@ -158,11 +158,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       title: 'Number -12',
       id : 7,
       content: {
-        igniteZoneRampName: 'Cedar Rapids',
+        igniteZoneRampName: 'Fayetteville',
         emptyActualCount: 163,
-        loadedActualCount: 743,
-        loadedprojectedCount: 154,
-        emptyProjectedCount: 336
+        loadedActualCount: 543,
+        loadedprojectedCount: 254,
+        emptyProjectedCount: 326
       },
       icon: this.mIcon2,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
@@ -220,8 +220,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     div.appendChild(this.compRef.location.nativeElement);
     this.infoWindow.setContent(div);
     this.infoWindow.open(this.map, marker);
-
-    this.updateCurveMarker(marker, [this.markers[1], this.markers[2], this.markers[3]]);
+    setTimeout(() => {
+      this.updateCurveMarker(marker, [this.markers[2], this.markers[3], this.markers[4]]);
+    }, 500);
   }
 
   ngOnDestroy(): void {
@@ -359,43 +360,111 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     for (const connection of connections) {
       const Marker = google.maps.Marker;
       const Point = google.maps.Point;
-      const pos1 = markerP1.position;
+      const clickPoint = markerP1.position;
       const pos2 = connection.position;
       const projection = this.map.getProjection();
-      const p1 = projection.fromLatLngToPoint(pos1);
+      const p1 = projection.fromLatLngToPoint(clickPoint);
       const p2 = projection.fromLatLngToPoint(pos2);
 
-      // Calculate the arc.
-      // To simplify the math, these points
-      // are all relative to p1:
-      const e = new Point(p2.x - p1.x, p2.y - p1.y); // endpoint (p2 relative to p1)
-      const m = new Point(e.x / 2, e.y / 2); // midpoint
-      const o = new Point(e.y, -e.x); // orthogonal
-      const c = new Point( // curve control point
-        m.x + this.curvature * o.x,
-        m.y + this.curvature * o.y);
+      console.log(p1);
 
-      const pathDef = 'M 0,0 ' +
-        'q ' + c.x + ',' + c.y + ' ' + e.x + ',' + e.y;
+      // calculate offset
+      const offsetX = (Math.abs(p1.x - p2.x) < 3) ? 0.6 : 1.3;
+      const offsetY = (Math.abs(p1.y - p2.y) < 3) ? 0.6 : 1.3;
+
+      p2.x = ( p2.x < p1.x) ? p2.x + offsetX : p2.x - offsetX;
+      p2.y = ( p2.y < p1.y) ? p2.y + offsetY : p2.y - offsetY;
+
+
+      const clickX = (p1.x < p2.x) ? p1.x + (offsetX / 2) : p1.x - (offsetX / 2);
+      const clickY = (p1.y < p2.y) ? p1.y + (offsetY / 2) : p1.y - (offsetY / 2);
+      const offsetClick = new Point(clickX, clickY);
+      const newClickPoint = projection.fromPointToLatLng(offsetClick);
+
+
+      // calculate inbound offset
+      const p2Inbound = {x: 0, y: 0};
+      const diffX = Math.abs(p1.x - p2.x);
+      const diffY = Math.abs(p1.y - p2.y);
+      const totalDiff = diffX + diffY;
+      const xShare = (diffX / totalDiff);
+      const yShare = (diffY / totalDiff);
+
+
+      let clickXInbound = clickX;
+      let clickYnBound = clickY;
+      if (xShare > yShare) {
+        p2Inbound.x = p2.x;
+        p2Inbound.y = ( p2.y < p1.y) ? p2.y + 0.05 : p2.y - 0.05;
+        clickYnBound = (p1.y < p2.y) ? clickYnBound - 0.5 : clickYnBound + 0.5;
+      } else {
+        p2Inbound.y = p2.y;
+        p2Inbound.x = ( p2.x < p1.x) ? p2.x + 0.05 : p2.x - 0.05;
+        clickXInbound = (p1.x < p2.x) ? clickXInbound - 0.5 : clickXInbound + 0.5;
+      }
+
+      const offsetClickInbound = new Point(clickXInbound, clickYnBound);
+      const newClickPointInbound = projection.fromPointToLatLng(offsetClickInbound);
 
       const zoom = this.map.getZoom();
       const scale1 = 1 / (Math.pow(2, -zoom));
-
       const symbol = {
-        path: pathDef,
+        path: this.getPathDef(p1, p2, Point, this.curvature),
         scale: scale1,
-        strokeWeight: 2,
+        strokeWeight: 2.5,
         fillColor: 'none',
-        strokeColor: 'black'
+        strokeColor: 'green'
+      };
+      const symbolInbound = {
+        path: this.getPathDef(p1, p2Inbound, Point, this.curvature),
+        scale: scale1,
+        offset: '0',
+        strokeOpacity: 1,
+        repeat: '20px',
+        strokeWeight: 2.5,
+        fillColor: 'none',
+        strokeColor: 'red'
       };
       const curveMarker = new Marker({
-        position: pos1,
+        position: newClickPoint,
         clickable: false,
         icon: symbol,
         zIndex: 0,
         map: this.map
       });
+      const curveMarkerInbound = new Marker({
+        position: newClickPointInbound,
+        clickable: false,
+        icon: symbolInbound,
+        zIndex: 0,
+        map: this.map
+      });
+
+      // // Define a symbol using SVG path notation, with an opacity of 1.
+      // const lineSymbol = {
+      //   path: 'M 0,-2 0,0.5',
+      //   strokeOpacity: 1,
+      //   strokeWeight: 2,
+      //   scale: 4
+      // };
+      //
+      // // Create the polyline, passing the symbol in the 'icons' property.
+      // // Give the line an opacity of 0.
+      // // Repeat the symbol at intervals of 20 pixels to create the dashed effect.
+      // const line = new google.maps.Polyline({
+      //   path: [clickPoint, pos2],
+      //   strokeOpacity: 0,
+      //   strokeColor: 'green',
+      //   icons: [{
+      //     icon: lineSymbol,
+      //     offset: '0',
+      //     repeat: '4%'
+      //   }],
+      //   map: this.map
+      // });
+
       this.curveMarkers.push(curveMarker);
+      this.curveMarkers.push(curveMarkerInbound);
       this.init(markerP1, connection);
     }
   }
@@ -406,12 +475,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       google.maps.event.addListener(markerP1, 'position_changed', this.updateCurveMarker);
       google.maps.event.addListener(markerP2, 'position_changed', this.updateCurveMarker);
     }
+
+  getPathDef(p1: any, p2: any, Point: any, curve): string {
+    const e = new Point(p2.x - p1.x, p2.y - p1.y); // endpoint (p2 relative to p1)
+    const m = new Point(e.x / 2, e.y / 2); // midpoint
+    const o = new Point(e.y, -e.x); // orthogonal
+    const c = new Point( // curve control point
+      m.x + curve * o.x,
+      m.y + curve * o.y);
+    return 'M 0,0 ' +
+      'q ' + c.x + ',' + c.y + ' ' + e.x + ',' + e.y;
   }
+}
 
-
-// } else {
-//   this.curveMarker.setOptions({
-//     position: pos1,
-//     icon: symbol,
-//   });
-// }
