@@ -4,11 +4,24 @@ sudo: false
 language: node_js
 node_js:
   - '8'
+
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
+cache:
+  directories:
+    - ./node_modules
 services:
   - docker
-
 before_install:
   - docker build -t henrybarnacle/ignite-map-project -f Dockerfile.dev .
+
+install:
+  - npm install
 
 script:
   - docker run -e CI=true henrybarnacle/ignite-map-project npm run test
