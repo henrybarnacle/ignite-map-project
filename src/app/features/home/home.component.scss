@@ -211,7 +211,7 @@
   display: inline-block;
   margin-left: 10px;
 }
-.resposition-item-datapoint {;
+.resposition-item-datapoint {
   font-size: 15px;
   font-weight: bold;
   color: black;
@@ -269,6 +269,45 @@
   height:25px;
   float: right;
   margin-left: 20px;
+}
+.execution-item-data {
+  float: left;
+  width: 14%;
+  display: inline-block;
+  margin-left: 10px;
+}
+.execution-item-datapoint {
+  float: right;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  padding-right: 15px;
+}
+.execution-item-location {
+  font-size: 16px;
+  font-weight: bold;
+  color: grey;
+  margin: 10px 0 0 10px;
+  padding: 5px 0 0 15px;
+}
+.execution-title {
+  position: relative;
+  font-size: 24px;
+  font-weight: bolder;
+  height:80px;
+  margin:15px;
+  letter-spacing: 2.5px;
+  padding-top: 10px;
+}
+.execution-title-container {
+  position: relative;
+  top: 15px;
+}
+.hr-spacer {
+  position: relative;
+  top: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 

@@ -125,33 +125,16 @@
            class="reposition-overlay reposition-sidebar">
   <div class="reposition-content">
     <div class="p-grid">
-      <div class="p-col-6">
-        <div class="reposition-title">EXECUTE PLAN</div>
-      </div>
-      <div class="p-col-6">
-        <button (click)="displayReposition = false" class="reposition-button"><i class="pi pi-times"></i></button>
-      </div>
+      <span class="p-col-12 execution-title-container">
+        <span class="execution-title">EXECUTE PLAN</span>
+        <button (click)="displayExecute = false" class="reposition-button"><i class="pi pi-times"></i></button>
+      </span>
+      <hr class="hr-spacer">
       <p-scrollPanel [style]="{width: '100%', height: '50vh'}">
-        <div *ngFor="let marker of markers" class="p-col-12 reposition-item">
-          <div class="reposition-item-location">{{marker.content.igniteZoneRampName}}</div>
-          <div class="resposition-item-data">
-            <div class="resposition-item-datapoint">{{marker.content.emptyActualCount}}</div>
-            <div class="resposition-item-data-label">Inbound</div>
-          </div>
-          <div class="resposition-item-data">
-            <div class="resposition-item-datapoint">{{marker.content.emptyProjectedCount}}</div>
-            <div class="resposition-item-data-label">Outbound</div>
-          </div>
-          <div class="resposition-item-data">
-            <div class="resposition-item-datapoint">+{{marker.content.loadedprojectedCount}}</div>
-            <div class="resposition-item-data-label">Balance</div>
-          </div>
-          <div class="resposition-item-data">
-            <div class="resposition-item-datapoint">{{marker.content.loadedActualCount}}</div>
-            <div class="resposition-item-data-label">Recommend</div>
-          </div>
-          <div class="resposition-input-container">
-            <input class="resposition-input"/>
+        <div *ngFor="let marker of markers" class="p-col-12">
+          <div *ngIf="marker.reposition !== '' && marker.reposition > 0">
+            <span class="execution-item-location">{{marker.content.igniteZoneRampName}}</span>
+              <span class="execution-item-datapoint">{{marker.reposition}}</span>
           </div>
         </div>
       </p-scrollPanel>

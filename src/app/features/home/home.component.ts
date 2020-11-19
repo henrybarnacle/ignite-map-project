@@ -260,7 +260,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   }
   showExecute(): void {
     this.displayExecute = true;
-    console.log('here');
   }
 
   loadAllMarkers(): void {
