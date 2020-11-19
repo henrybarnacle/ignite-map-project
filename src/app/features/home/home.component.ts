@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   detailView: boolean;
   mapView: boolean;
   tableView: boolean;
+  showSubmitButton: boolean;
   newEnd;
   repositionTotal = 0;
 
@@ -373,6 +374,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
         this.repositionTotal += parseInt(marker.reposition, 10);
       }
     }
+  }
+  saveReposition(): void {
+    this.closeDetailView();
+    this.showSubmitButton = true;
   }
 
   updateCurveMarker(markerP1: any, connections: any[]): void {
