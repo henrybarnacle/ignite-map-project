@@ -1,10 +1,10 @@
-<app-sidebar></app-sidebar>
+<!--<app-sidebar></app-sidebar>-->
+<div class="p-col-12 app-header">
+  <div class="app-title">CAPACITY MAP</div>
+</div>
   <div class="map-container">
     <div class="p-col-12">
-      <div class="breadcrumb-text"><span>Capacity Mapping</span><i class="pi pi-chevron-right" style="font-size: 0.75rem; padding: 4px"></i><span>Dashboard</span></div>
-    </div>
-    <div class="p-col-12">
-      <h3>CAPACITY MAPPING</h3>
+      <h3>CONTAINER CAPACITY</h3>
     </div>
     <p-panel>
       <div class="capacity-map-header">
@@ -23,12 +23,7 @@
                   <path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
                 </svg>
               </div>
-              <div class="dots">
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                </svg>
-              </div>
-              <button [ngClass]="{'button-active': tableView}" (click)="showTable()" class="p-button-outlined button-size" tabindex="0">
+              <button [ngClass]="{'button-active': tableView}" (click)="showTable()" class="p-button-outlined button-size button-right" tabindex="0">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list button-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
                 </svg>
@@ -38,7 +33,7 @@
                 <path fill-rule="evenodd" d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98l4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z"/>
               </svg>
             </button>
-              <button class="p-button-outlined button-size" (click)="showDetails()">
+              <button class="p-button-outlined button-size button-left" (click)="showDetails()">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list-ul button-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
                 </svg>
@@ -95,6 +90,46 @@
           <button (click)="displayReposition = false" class="reposition-button"><i class="pi pi-times"></i></button>
         </div>
       <p-scrollPanel [style]="{width: '100%', height: '50vh'}">
+        <div *ngFor="let marker of markers; let index = index" class="p-col-12 reposition-item">
+          <div class="reposition-item-location">{{marker.content.igniteZoneRampName}}</div>
+          <div class="resposition-item-data">
+            <div class="resposition-item-datapoint">{{marker.content.emptyActualCount}}</div>
+            <div class="resposition-item-data-label">Inbound</div>
+          </div>
+          <div class="resposition-item-data">
+            <div class="resposition-item-datapoint">{{marker.content.emptyProjectedCount}}</div>
+            <div class="resposition-item-data-label">Outbound</div>
+          </div>
+          <div class="resposition-item-data">
+            <div class="resposition-item-datapoint">+{{marker.content.loadedprojectedCount}}</div>
+            <div class="resposition-item-data-label">Balance</div>
+          </div>
+          <div class="resposition-item-data">
+            <div class="resposition-item-datapoint">{{marker.content.loadedActualCount}}</div>
+            <div class="resposition-item-data-label">Recommend</div>
+          </div>
+          <div class="resposition-input-container">
+            <input (keyup)="giveTotal()" [(ngModel)]="markers[index].reposition" class="resposition-input"/>
+          </div>
+        </div>
+      </p-scrollPanel>
+      <h1 class="reposition-total">Total {{repositionTotal}}</h1>
+    </div>
+    <button class="reposition-submit">Save</button>
+  </div>
+</p-sidebar>
+<!--execute overlay-->
+<p-sidebar [(visible)]="displayExecute" position="right"
+           class="reposition-overlay reposition-sidebar">
+  <div class="reposition-content">
+    <div class="p-grid">
+      <div class="p-col-6">
+        <div class="reposition-title">EXECUTE PLAN</div>
+      </div>
+      <div class="p-col-6">
+        <button (click)="displayReposition = false" class="reposition-button"><i class="pi pi-times"></i></button>
+      </div>
+      <p-scrollPanel [style]="{width: '100%', height: '50vh'}">
         <div *ngFor="let marker of markers" class="p-col-12 reposition-item">
           <div class="reposition-item-location">{{marker.content.igniteZoneRampName}}</div>
           <div class="resposition-item-data">
@@ -118,24 +153,6 @@
           </div>
         </div>
       </p-scrollPanel>
-      <div class="p-col-12 reposition-item-selected">
-        <div class="reposition-item-location">Kansas City</div>
-        <div class="resposition-item-data">
-          <div class="resposition-item-datapoint">5432</div>
-          <div class="resposition-item-data-label">Inbound</div>
-        </div>
-        <div class="resposition-item-data">
-          <div class="resposition-item-datapoint">432</div>
-          <div class="resposition-item-data-label">Outbound</div>
-        </div>
-        <div class="resposition-item-data">
-          <div class="resposition-item-datapoint">+332</div>
-          <div class="resposition-item-data-label">Balance</div>
-        </div>
-        <div class="resposition-input-container resposition-input-container-selected">
-          <input class="resposition-input"/>
-        </div>
-      </div>
     </div>
     <button class="reposition-submit">Submit</button>
   </div>

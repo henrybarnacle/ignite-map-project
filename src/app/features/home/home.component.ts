@@ -31,9 +31,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   data: any;
   displayFilters: boolean;
   displayReposition: boolean;
+  displayExecute: boolean;
   detailView: boolean;
   mapView: boolean;
   tableView: boolean;
+  newEnd;
+  repositionTotal = 0;
 
   mIcon = {
     path: google.maps.SymbolPath.CIRCLE,
@@ -60,6 +63,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       position: new google.maps.LatLng(39.468739, -92.950631),
       map: this.map,
       id: 1,
+      reposition: '',
       title: 'Number 123',
       content: {
         igniteZoneRampName: 'Kansas City',
@@ -77,6 +81,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       map: this.map,
       title: 'Number -12',
       id: 2,
+      reposition: '',
       content: {
         igniteZoneRampName: 'Cedar Rapids',
         emptyActualCount: 763,
@@ -93,6 +98,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       map: this.map,
       title: 'Number -12',
       id: 3,
+      reposition: '',
       content: {
         igniteZoneRampName: 'Seattle',
         emptyActualCount: 163,
@@ -109,6 +115,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       map: this.map,
       title: 'Number -12',
       id: 4,
+      reposition: '',
       content: {
         igniteZoneRampName: 'Omaha',
         emptyActualCount: 301,
@@ -125,6 +132,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       map: this.map,
       title: 'Number -12',
       id: 5,
+      reposition: '',
       content: {
         igniteZoneRampName: 'Dallas',
         emptyActualCount: 888,
@@ -141,6 +149,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       map: this.map,
       title: 'Number -12',
       id: 6,
+      reposition: '',
       content: {
         igniteZoneRampName: 'Detroit',
         emptyActualCount: 123,
@@ -157,6 +166,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       map: this.map,
       title: 'Number -12',
       id : 7,
+      reposition: '',
       content: {
         igniteZoneRampName: 'Fayetteville',
         emptyActualCount: 163,
@@ -344,10 +354,25 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     this.displayReposition = true;
   }
 
+  onShowExecuteRequest(event): void {
+    this.displayExecute = true;
+  }
+
+
   closeDetailView(): void {
     this.detailView = false;
     this.mapView = true;
     this.displayReposition = false;
+  }
+
+  giveTotal(): void {
+    this.repositionTotal = 0;
+    console.log(this.markers);
+    for (const marker of this.markers) {
+      if (marker.reposition !== '') {
+        this.repositionTotal += parseInt(marker.reposition, 10);
+      }
+    }
   }
 
   updateCurveMarker(markerP1: any, connections: any[]): void {
@@ -371,40 +396,18 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       // calculate offset
       const offsetX = (Math.abs(p1.x - p2.x) < 3) ? 0.6 : 1.3;
       const offsetY = (Math.abs(p1.y - p2.y) < 3) ? 0.6 : 1.3;
-
+      const p2End = {x: 0, y: 0};
       p2.x = ( p2.x < p1.x) ? p2.x + offsetX : p2.x - offsetX;
+      p2End.x = ( p2.x < p1.x) ? p2.x - (offsetX / 2) : p2.x + (offsetX / 2);
       p2.y = ( p2.y < p1.y) ? p2.y + offsetY : p2.y - offsetY;
-
+      p2End.y = ( p2.y < p1.y) ? p2.y - (offsetY / 2) : p2.y + (offsetY / 2);
+      const outBoundPosition = new Point(p2End.x, p2End.y);
 
       const clickX = (p1.x < p2.x) ? p1.x + (offsetX / 2) : p1.x - (offsetX / 2);
       const clickY = (p1.y < p2.y) ? p1.y + (offsetY / 2) : p1.y - (offsetY / 2);
       const offsetClick = new Point(clickX, clickY);
       const newClickPoint = projection.fromPointToLatLng(offsetClick);
 
-
-      // calculate inbound offset
-      const p2Inbound = {x: 0, y: 0};
-      const diffX = Math.abs(p1.x - p2.x);
-      const diffY = Math.abs(p1.y - p2.y);
-      const totalDiff = diffX + diffY;
-      const xShare = (diffX / totalDiff);
-      const yShare = (diffY / totalDiff);
-
-
-      let clickXInbound = clickX;
-      let clickYnBound = clickY;
-      if (xShare > yShare) {
-        p2Inbound.x = p2.x;
-        p2Inbound.y = ( p2.y < p1.y) ? p2.y + 0.05 : p2.y - 0.05;
-        clickYnBound = (p1.y < p2.y) ? clickYnBound - 0.5 : clickYnBound + 0.5;
-      } else {
-        p2Inbound.y = p2.y;
-        p2Inbound.x = ( p2.x < p1.x) ? p2.x + 0.05 : p2.x - 0.05;
-        clickXInbound = (p1.x < p2.x) ? clickXInbound - 0.5 : clickXInbound + 0.5;
-      }
-
-      const offsetClickInbound = new Point(clickXInbound, clickYnBound);
-      const newClickPointInbound = projection.fromPointToLatLng(offsetClickInbound);
 
       const zoom = this.map.getZoom();
       const scale1 = 1 / (Math.pow(2, -zoom));
@@ -413,17 +416,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
         scale: scale1,
         strokeWeight: 2.5,
         fillColor: 'none',
-        strokeColor: 'green'
+        strokeColor: 'dodgerblue'
       };
-      const symbolInbound = {
-        path: this.getPathDef(p1, p2Inbound, Point, this.curvature),
-        scale: scale1,
-        offset: '0',
-        strokeOpacity: 1,
-        repeat: '20px',
-        strokeWeight: 2.5,
-        fillColor: 'none',
-        strokeColor: 'red'
+      const dotSymbol = {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 3.5,
+        strokeWeight: 4.5,
+        fillColor: 'dodgerblue',
+        strokeColor: 'dodgerblue'
       };
       const curveMarker = new Marker({
         position: newClickPoint,
@@ -433,38 +433,26 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
         map: this.map
       });
       const curveMarkerInbound = new Marker({
-        position: newClickPointInbound,
+        position: newClickPoint,
         clickable: false,
-        icon: symbolInbound,
+        icon: dotSymbol,
         zIndex: 0,
         map: this.map
       });
 
-      // // Define a symbol using SVG path notation, with an opacity of 1.
-      // const lineSymbol = {
-      //   path: 'M 0,-2 0,0.5',
-      //   strokeOpacity: 1,
-      //   strokeWeight: 2,
-      //   scale: 4
-      // };
-      //
-      // // Create the polyline, passing the symbol in the 'icons' property.
-      // // Give the line an opacity of 0.
-      // // Repeat the symbol at intervals of 20 pixels to create the dashed effect.
-      // const line = new google.maps.Polyline({
-      //   path: [clickPoint, pos2],
-      //   strokeOpacity: 0,
-      //   strokeColor: 'green',
-      //   icons: [{
-      //     icon: lineSymbol,
-      //     offset: '0',
-      //     repeat: '4%'
-      //   }],
-      //   map: this.map
-      // });
-
       this.curveMarkers.push(curveMarker);
       this.curveMarkers.push(curveMarkerInbound);
+
+      const outBoundPoint = projection.fromPointToLatLng(outBoundPosition);
+      const curveMarkerOutbound = new Marker({
+        position: outBoundPoint,
+        clickable: false,
+        icon: dotSymbol,
+        zIndex: 0,
+        map: this.map
+      });
+      this.curveMarkers.push(curveMarkerOutbound);
+
       this.init(markerP1, connection);
     }
   }
@@ -483,6 +471,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     const c = new Point( // curve control point
       m.x + curve * o.x,
       m.y + curve * o.y);
+    this.newEnd = e;
     return 'M 0,0 ' +
       'q ' + c.x + ',' + c.y + ' ' + e.x + ',' + e.y;
   }

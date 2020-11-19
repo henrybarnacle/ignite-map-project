@@ -3,15 +3,44 @@ h3 {
   letter-spacing: 0.075em;
   margin-top: 5px !important;
 }
+.app-header {
+  position: relative;
+  width: 110%;
+  left: -10px;
+  bottom: 10px;
+  height: 50px;
+  background-color: #007DBA;
+  color: white;
+}
+.app-title {
+  letter-spacing: 0.08em;
+  font-size: 22px;
+  position: relative;
+  top: 10px;
+  left: 50px;
+}
+.reposition-total {
+  position: relative;
+  left: 50%;
+}
 .button-size {
   font-size: 20px;
   float: right;
-  color: grey;
-  border: 1px solid #D3D3D3;
+  color: whitesmoke;
+  background-color: dodgerblue;
+  border: 1px solid #007DBA;
+}
+.button-right {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.button-left {
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
 }
 .button-active {
   color: whitesmoke;
-  background-color: #D3D3D3;
+  background-color: #007DBA;
 }
 .button-icon {
   position: relative;
@@ -34,9 +63,12 @@ h3 {
 
 }
 .filter-icon {
-  font-size: 24px;
+  position: relative;
+  font-size: 27px;
   float: left;
-  color: grey;
+  left: 30px;
+  right: 10px;
+  color: dodgerblue;
   line-height: 35px;
 }
 .date-icon {
@@ -67,8 +99,7 @@ h3 {
 .map-container {
   height: 80vh;
   width: 95%;
-  margin-top: 20px;
-  margin-left: 60px;
+  margin-left: 40px;
 }
 
 .map-section {

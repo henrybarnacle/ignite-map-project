@@ -1,0 +1,23 @@
+language: generic
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t henrybarnacle/ignite-map-project -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true henrybarnacle/ignite-map-project npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "ignite-map-project"
+  env: "IgniteMapProject-env"
+  bucket_name: "elasticbeanstalk-us-east-1-357862968165"
+  bucket_path: "ignite-map-project"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
