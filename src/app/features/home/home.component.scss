@@ -1,7 +1,12 @@
-h3 {
+.subtitle {
   color: #A9A9A9;
+  font-size: 18px;
   letter-spacing: 0.075em;
   margin-top: 5px !important;
+}
+.subtitle-container {
+  padding-top: 10px;
+  padding-bottom: 15px;
 }
 .app-header {
   position: relative;
@@ -249,6 +254,21 @@ h3 {
 .detail-close {
   position: relative;
   bottom: 10px;
+}
+.reposition-submit-option {
+  font-size: 14px;
+  position: relative;
+  float: right;
+}
+.reposition-submit-option-button {
+  background-color: #3CB371;
+  color:white;
+  border:none;
+  border-radius:6px;
+  width:90px;
+  height:25px;
+  float: right;
+  margin-left: 20px;
 }
 
 

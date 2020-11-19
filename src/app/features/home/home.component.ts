@@ -258,6 +258,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   showFilters(): void {
 
   }
+  showExecute(): void {
+    this.displayExecute = true;
+    console.log('here');
+  }
 
   loadAllMarkers(): void {
    this.markers.forEach(markerInfo => {

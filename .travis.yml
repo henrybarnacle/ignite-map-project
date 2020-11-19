@@ -1,45 +1,23 @@
-  sudo: required
-  dist: trusty
-  language: node_js
-  node_js:
-    - '7.7.4'
+language: generic
+sudo: required
 
-  services:
-    - docker
+services:
+  - docker
 
-  addons:
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
+before_install:
+  - docker build -t henrybarnacle/ignite-map-project -f Dockerfile.dev .
 
-  before_install:
-    - export CHROME_BIN=chromium-browser
-    - export DISPLAY=:99.0
-    - sh -e /etc/init.d/xvfb start
+script:
+  - docker run -e CI=true henrybarnacle/ignite-map-project npm run test
 
-  before_script:
-    - npm install
-
-  script:
-    - npm run test -- --watch=false
-    - npm run e2e
-
-  after_success:
-    - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      npm run build;
-      docker build -t henrybarnacle/ignite-map-project -f ./.docker/nginx.dockerfile .;
-
-  deploy:
-    provider: elasticbeanstalk
-    region: "us-east-1"
-    app: "ignite-map-project"
-    env: "IgniteMapProject-env"
-    bucket_name: "elasticbeanstalk-us-east-1-357862968165"
-    bucket_path: "ignite-map-project"
-    on:
-      branch: master
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: $AWS_SECRET_KEY
-
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "ignite-map-project"
+  env: "IgniteMapProject-env"
+  bucket_name: "elasticbeanstalk-us-east-1-357862968165"
+  bucket_path: "ignite-map-project"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY

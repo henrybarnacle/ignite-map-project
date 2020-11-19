@@ -3,8 +3,9 @@
   <div class="app-title">CAPACITY MAP</div>
 </div>
   <div class="map-container">
-    <div class="p-col-12">
-      <h3>CONTAINER CAPACITY</h3>
+    <div class="p-col-12 subtitle-container">
+      <span class="subtitle">CONTAINER CAPACITY</span>
+      <span *ngIf="showSubmitButton" class="reposition-submit-option">Repositioning plan status: in progress<button (click)="showExecute()" class="reposition-submit-option-button">Execute</button></span>
     </div>
     <p-panel>
       <div class="capacity-map-header">
