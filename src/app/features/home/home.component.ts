@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       map: this.map,
       id: 1,
       reposition: '',
-      title: 'Number 123',
+      title: 'Kansas City',
       content: {
         igniteZoneRampName: 'Kansas City',
         emptyActualCount: 123,
@@ -80,7 +80,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     {
       position: new google.maps.LatLng(40.469739, -75.951631),
       map: this.map,
-      title: 'Number -12',
+      title: 'Cedar Rapids',
       id: 2,
       reposition: '',
       content: {
@@ -97,7 +97,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     {
       position: new google.maps.LatLng(47.626738, -121.982783),
       map: this.map,
-      title: 'Number -12',
+      title: 'Seattle',
       id: 3,
       reposition: '',
       content: {
@@ -114,7 +114,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     {
       position: new google.maps.LatLng(33.859271, -117.720087),
       map: this.map,
-      title: 'Number -12',
+      title: 'Omaha',
       id: 4,
       reposition: '',
       content: {
@@ -131,7 +131,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     {
       position: new google.maps.LatLng(46.728512, -87.749386),
       map: this.map,
-      title: 'Number -12',
+      title: 'Dallas',
       id: 5,
       reposition: '',
       content: {
@@ -148,7 +148,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     {
       position: new google.maps.LatLng(32.609565, -96.626339),
       map: this.map,
-      title: 'Number -12',
+      title: 'Detroit',
       id: 6,
       reposition: '',
       content: {

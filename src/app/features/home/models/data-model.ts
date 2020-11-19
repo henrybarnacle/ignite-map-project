@@ -4,22 +4,557 @@ export class DataModel {
   constructor() {
     this.dataDTO = [
       {
-        locationName: 'Kansas City',
-        inbound: {
-          emptyActual: 668,
-          emptyProjected: 468,
-          loadedActual: 200,
-          loadedProjected: 200
-        }
+        id: 1,
+        data: [
+          {
+            id: 2,
+            inbound: {
+              empty: 168,
+              loadedActual: 200,
+              loadedProjected: 220
+            },
+            outbound: {
+              empty: 441,
+              loadedActual: 330,
+              loadedProjected: 300
+            }
+          },          {
+            id: 3,
+            inbound: {
+              empty: 668,
+              loadedActual: 400,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 678,
+              loadedActual: 220,
+              loadedProjected: 400
+            }
+          },          {
+            id: 4,
+            inbound: {
+              empty: 118,
+              loadedActual: 200,
+              loadedProjected: 110
+            },
+            outbound: {
+              empty: 135,
+              loadedActual: 209,
+              loadedProjected: 190
+            }
+          }, {
+            id: 5,
+            inbound: {
+              empty: 268,
+              loadedActual: 110,
+              loadedProjected: 130
+            },
+            outbound: {
+              empty: 228,
+              loadedActual: 117,
+              loadedProjected: 118
+            }
+          }, {
+            id: 6,
+            inbound: {
+              empty: 558,
+              loadedActual: 250,
+              loadedProjected: 203
+            },
+            outbound: {
+              empty: 511,
+              loadedActual: 133,
+              loadedProjected: 130
+            }
+          }, {
+            id: 7,
+            inbound: {
+              empty: 368,
+              loadedActual: 400,
+              loadedProjected: 400
+            },
+            outbound: {
+              empty: 168,
+              loadedActual: 220,
+              loadedProjected: 200
+            }
+          },
+        ]
       },
       {
-        outbound: {
-          emptyActual: 668,
-          emptyProjected: 468,
-          loadedActual: 110,
-          loadedProjected: 200
-        }
-      }
+        id: 2,
+        data: [
+          {
+            id: 1,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 3,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 4,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 5,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 6,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 7,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          },
+
+        ]
+      },
+      {
+        id: 3,
+        data: [
+          {
+            id: 1,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 2,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 4,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 5,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 6,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 7,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          },
+
+        ]
+      },
+      {
+        id: 4,
+        data: [
+          {
+            id: 1,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 2,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 3,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 5,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 6,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 7,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          },
+
+        ]
+      },
+      {
+        id: 5,
+        data: [
+          {
+            id: 1,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 2,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 3,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 4,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 6,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 7,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          },
+
+        ]
+      },
+      {
+        id: 6,
+        data: [
+          {
+            id: 1,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 2,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 3,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 4,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 5,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 7,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          },
+
+        ]
+      },
+      {
+        id: 7,
+        data: [
+          {
+            id: 1,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 2,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 3,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 4,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 5,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          }, {
+            id: 6,
+            inbound: {
+              empty: 668,
+              loadedActual: 200,
+              loadedProjected: 200
+            },
+            outbound: {
+              empty: 668,
+              loadedActual: 110,
+              loadedProjected: 200
+            }
+          },
+
+        ]
+      },
     ];
   }
   // mIcon = {
