@@ -9,74 +9,74 @@ export class DataModel {
           {
             id: 2,
             inbound: {
-              empty: 168,
-              loadedActual: 200,
-              loadedProjected: 220
+              empty: 0,
+              loadedActual: 310,
+              loadedProjected: 320
             },
             outbound: {
-              empty: 441,
+              empty: 0,
               loadedActual: 330,
               loadedProjected: 300
             }
           },          {
             id: 3,
             inbound: {
-              empty: 668,
+              empty: 0,
               loadedActual: 400,
-              loadedProjected: 200
+              loadedProjected: 400
             },
             outbound: {
-              empty: 678,
-              loadedActual: 220,
-              loadedProjected: 400
+              empty: 0,
+              loadedActual: 310,
+              loadedProjected: 321
             }
           },          {
             id: 4,
             inbound: {
-              empty: 118,
-              loadedActual: 200,
+              empty: 0,
+              loadedActual: 123,
               loadedProjected: 110
             },
             outbound: {
-              empty: 135,
+              empty: 0,
               loadedActual: 209,
-              loadedProjected: 190
+              loadedProjected: 210
             }
           }, {
             id: 5,
             inbound: {
-              empty: 268,
-              loadedActual: 110,
-              loadedProjected: 130
+              empty: 0,
+              loadedActual: 312,
+              loadedProjected: 333
             },
             outbound: {
-              empty: 228,
-              loadedActual: 117,
-              loadedProjected: 118
+              empty: 0,
+              loadedActual: 302,
+              loadedProjected: 317
             }
           }, {
             id: 6,
             inbound: {
-              empty: 558,
-              loadedActual: 250,
-              loadedProjected: 203
+              empty: 0,
+              loadedActual: 555,
+              loadedProjected: 544
             },
             outbound: {
-              empty: 511,
-              loadedActual: 133,
-              loadedProjected: 130
+              empty: 0,
+              loadedActual: 543,
+              loadedProjected: 541
             }
           }, {
             id: 7,
             inbound: {
-              empty: 368,
-              loadedActual: 400,
+              empty: 0,
+              loadedActual: 411,
               loadedProjected: 400
             },
             outbound: {
-              empty: 168,
-              loadedActual: 220,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 500,
+              loadedProjected: 510
             }
           },
         ]
@@ -87,19 +87,19 @@ export class DataModel {
           {
             id: 1,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 330,
+              loadedProjected: 300
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 310,
+              loadedProjected: 320
             }
           }, {
             id: 3,
             inbound: {
-              empty: 668,
+              empty: 0,
               loadedActual: 200,
               loadedProjected: 200
             },
@@ -111,50 +111,50 @@ export class DataModel {
           }, {
             id: 4,
             inbound: {
-              empty: 668,
+              empty: 0,
               loadedActual: 200,
               loadedProjected: 200
             },
             outbound: {
-              empty: 668,
+              empty: 0,
               loadedActual: 110,
               loadedProjected: 200
             }
           }, {
             id: 5,
             inbound: {
-              empty: 668,
+              empty: 0,
               loadedActual: 200,
-              loadedProjected: 200
+              loadedProjected: 205
             },
             outbound: {
-              empty: 668,
+              empty: 0,
               loadedActual: 110,
-              loadedProjected: 200
+              loadedProjected: 120
             }
           }, {
             id: 6,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 232,
+              loadedProjected: 232
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 443,
+              loadedProjected: 450
             }
           }, {
             id: 7,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 343,
+              loadedProjected: 344
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 541,
+              loadedProjected: 544
             }
           },
 
@@ -166,74 +166,74 @@ export class DataModel {
           {
             id: 1,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 310,
+              loadedProjected: 321
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 310,
+              loadedProjected: 320
             }
           }, {
             id: 2,
             inbound: {
               empty: 668,
-              loadedActual: 200,
+              loadedActual: 110,
               loadedProjected: 200
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
+              empty: 0,
+              loadedActual: 200,
               loadedProjected: 200
             }
           }, {
             id: 4,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 321,
+              loadedProjected: 342
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 365,
+              loadedProjected: 342
             }
           }, {
             id: 5,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 655,
+              loadedProjected: 654
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 553,
+              loadedProjected: 533
             }
           }, {
             id: 6,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 299,
+              loadedProjected: 289
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 377,
+              loadedProjected: 378
             }
           }, {
             id: 7,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 276,
+              loadedProjected: 270
             },
             outbound: {
-              empty: 668,
+              empty: 0,
               loadedActual: 110,
-              loadedProjected: 200
+              loadedProjected: 100
             }
           },
 
@@ -245,74 +245,74 @@ export class DataModel {
           {
             id: 1,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 209,
+              loadedProjected: 210
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 123,
+              loadedProjected: 110
             }
           }, {
             id: 2,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
+              empty: 0,
+              loadedActual: 110,
               loadedProjected: 200
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
+              empty: 0,
+              loadedActual: 120,
               loadedProjected: 200
             }
           }, {
             id: 3,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 365,
+              loadedProjected: 342
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 321,
+              loadedProjected: 342
             }
           }, {
             id: 5,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 160,
+              loadedProjected: 161
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 176,
+              loadedProjected: 175
             }
           }, {
             id: 6,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 321,
+              loadedProjected: 341
             },
             outbound: {
-              empty: 668,
+              empty: 0,
               loadedActual: 110,
               loadedProjected: 200
             }
           }, {
             id: 7,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 376,
+              loadedProjected: 387
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 340,
+              loadedProjected: 355
             }
           },
 
@@ -324,74 +324,74 @@ export class DataModel {
           {
             id: 1,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 302,
+              loadedProjected: 317
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 312,
+              loadedProjected: 333
             }
           }, {
             id: 2,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 110,
+              loadedProjected: 120
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 200,
+              loadedProjected: 205
             }
           }, {
             id: 3,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 553,
+              loadedProjected: 533
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 655,
+              loadedProjected: 654
             }
           }, {
             id: 4,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 176,
+              loadedProjected: 175
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 160,
+              loadedProjected: 161
             }
           }, {
             id: 6,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 341,
+              loadedProjected: 350
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 320,
+              loadedProjected: 340
             }
           }, {
             id: 7,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 189,
+              loadedProjected: 188
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 140,
+              loadedProjected: 120
             }
           },
 
@@ -403,74 +403,74 @@ export class DataModel {
           {
             id: 1,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 543,
+              loadedProjected: 541
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 555,
+              loadedProjected: 544
             }
           }, {
             id: 2,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 443,
+              loadedProjected: 450
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 232,
+              loadedProjected: 232
             }
           }, {
             id: 3,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 377,
+              loadedProjected: 378
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 299,
+              loadedProjected: 289
             }
           }, {
             id: 4,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
+              empty: 0,
+              loadedActual: 110,
               loadedProjected: 200
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 321,
+              loadedProjected: 341
             }
           }, {
             id: 5,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 320,
+              loadedProjected: 340
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 341,
+              loadedProjected: 350
             }
           }, {
             id: 7,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 322,
+              loadedProjected: 320
             },
             outbound: {
-              empty: 668,
+              empty: 0,
               loadedActual: 110,
-              loadedProjected: 200
+              loadedProjected: 130
             }
           },
 
@@ -482,77 +482,76 @@ export class DataModel {
           {
             id: 1,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 500,
+              loadedProjected: 510
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 411,
+              loadedProjected: 400
             }
           }, {
             id: 2,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 541,
+              loadedProjected: 544
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 343,
+              loadedProjected: 344
             }
           }, {
             id: 3,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 110,
+              loadedProjected: 100
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 276,
+              loadedProjected: 270
             }
           }, {
             id: 4,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 340,
+              loadedProjected: 355
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 376,
+              loadedProjected: 387
             }
           }, {
             id: 5,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 140,
+              loadedProjected: 120
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 189,
+              loadedProjected: 188
             }
           }, {
             id: 6,
             inbound: {
-              empty: 668,
-              loadedActual: 200,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 110,
+              loadedProjected: 130
             },
             outbound: {
-              empty: 668,
-              loadedActual: 110,
-              loadedProjected: 200
+              empty: 0,
+              loadedActual: 322,
+              loadedProjected: 320
             }
           },
-
         ]
       },
     ];

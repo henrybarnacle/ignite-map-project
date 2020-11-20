@@ -36,8 +36,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   mapView: boolean;
   tableView: boolean;
   showSubmitButton: boolean;
-  newEnd;
+  newEnd: any;
+  laneBalances: any[] = [];
   repositionTotal = 0;
+  laneInfowindows: any[];
 
   mIcon = {
     path: google.maps.SymbolPath.CIRCLE,
@@ -61,119 +63,119 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   };
   markers = [
     {
-      position: new google.maps.LatLng(39.468739, -92.950631),
+      position: new google.maps.LatLng(34.217032, -117.986211),
       map: this.map,
       id: 1,
+      data: {id: '', data: []},
       reposition: '',
-      title: 'Kansas City',
+      balance: 0,
+      title: 'Los Angeles',
       content: {
-        igniteZoneRampName: 'Kansas City',
-        emptyActualCount: 123,
-        loadedActualCount: 443,
-        loadedprojectedCount: 222,
-        emptyProjectedCount: 76
+        igniteZoneRampName: 'Los Angeles',
+        inbound: {empty: 0, loadedActual: 0, loadedProjected: 0},
+        outbound: {empty: 0, loadedActual: 0, loadedProjected: 0}
       },
       icon: this.mIcon,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
         text: '-54'}
     },
     {
-      position: new google.maps.LatLng(40.469739, -75.951631),
+      position: new google.maps.LatLng(35.116508, -90.275706),
       map: this.map,
-      title: 'Cedar Rapids',
+      title: 'Memphis',
       id: 2,
+      balance: 0,
+      data: {id: '', data: []},
       reposition: '',
       content: {
-        igniteZoneRampName: 'Cedar Rapids',
-        emptyActualCount: 763,
-        loadedActualCount: 743,
-        loadedprojectedCount: 754,
-        emptyProjectedCount: 736
+        igniteZoneRampName: 'Memphis',
+        inbound: {empty: 0, loadedActual: 0, loadedProjected: 0},
+        outbound: {empty: 0, loadedActual: 0, loadedProjected: 0}
       },
       icon: this.mIcon,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
         text: '+120'}
     },
     {
-      position: new google.maps.LatLng(47.626738, -121.982783),
+      position: new google.maps.LatLng(30.457216, -81.938591),
       map: this.map,
-      title: 'Seattle',
+      title: 'Jacksonville',
       id: 3,
+      balance: 0,
+      data: {id: '', data: []},
       reposition: '',
       content: {
-        igniteZoneRampName: 'Seattle',
-        emptyActualCount: 163,
-        loadedActualCount: 213,
-        loadedprojectedCount: 851,
-        emptyProjectedCount: 336
+        igniteZoneRampName: 'Jacksonville',
+        inbound: {empty: 0, loadedActual: 0, loadedProjected: 0},
+        outbound: {empty: 0, loadedActual: 0, loadedProjected: 0}
       },
       icon: this.mIcon,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
         text: '+120'}
     },
     {
-      position: new google.maps.LatLng(33.859271, -117.720087),
+      position: new google.maps.LatLng(29.960949, -95.629310),
       map: this.map,
-      title: 'Omaha',
+      title: 'Houston',
       id: 4,
+      balance: 0,
+      data: {id: '', data: []},
       reposition: '',
       content: {
-        igniteZoneRampName: 'Omaha',
-        emptyActualCount: 301,
-        loadedActualCount: 663,
-        loadedprojectedCount: 252,
-        emptyProjectedCount: 36
+        igniteZoneRampName: 'Houston',
+        inbound: {empty: 0, loadedActual: 0, loadedProjected: 0},
+        outbound: {empty: 0, loadedActual: 0, loadedProjected: 0}
       },
       icon: this.mIcon2,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
         text: '+120'}
     },
     {
-      position: new google.maps.LatLng(46.728512, -87.749386),
+      position: new google.maps.LatLng(42.660742, -73.837463),
       map: this.map,
-      title: 'Dallas',
+      title: 'Albany',
       id: 5,
+      balance: 0,
+      data: {id: '', data: []},
       reposition: '',
       content: {
-        igniteZoneRampName: 'Dallas',
-        emptyActualCount: 888,
-        loadedActualCount: 742,
-        loadedprojectedCount: 110,
-        emptyProjectedCount: 236
+        igniteZoneRampName: 'Albany',
+        inbound: {empty: 0, loadedActual: 0, loadedProjected: 0},
+        outbound: {empty: 0, loadedActual: 0, loadedProjected: 0}
       },
       icon: this.mIcon,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
         text: '+120'}
     },
     {
-      position: new google.maps.LatLng(32.609565, -96.626339),
+      position: new google.maps.LatLng(42.168155, -83.334735),
       map: this.map,
       title: 'Detroit',
       id: 6,
+      balance: 0,
+      data: {id: '', data: []},
       reposition: '',
       content: {
         igniteZoneRampName: 'Detroit',
-        emptyActualCount: 123,
-        loadedActualCount: 143,
-        loadedprojectedCount: 155,
-        emptyProjectedCount: 556
+        inbound: {empty: 0, loadedActual: 0, loadedProjected: 0},
+        outbound: {empty: 0, loadedActual: 0, loadedProjected: 0}
       },
       icon: this.mIcon2,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
         text: '+120'}
     },
     {
-      position: new google.maps.LatLng(45.773487, -108.293819),
+      position: new google.maps.LatLng(47.543927, -122.282336),
       map: this.map,
-      title: 'Number -12',
+      title: 'Seattle',
       id : 7,
+      balance: 0,
+      data: {id: '', data: []},
       reposition: '',
       content: {
-        igniteZoneRampName: 'Fayetteville',
-        emptyActualCount: 163,
-        loadedActualCount: 543,
-        loadedprojectedCount: 254,
-        emptyProjectedCount: 326
+        igniteZoneRampName: 'Seattle',
+        inbound: {empty: 0, loadedActual: 0, loadedProjected: 0},
+        outbound: {empty: 0, loadedActual: 0, loadedProjected: 0}
       },
       icon: this.mIcon2,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
@@ -215,10 +217,33 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     // subscribe to http call to get ramps, save ramps in model
     //  this.rampInfoService.loadRamps();
     // this.dataModel.ramps
-    this.loadAllMarkers();
+    this.calculateRampBalances();
     this.setRegions();
   }
 
+  calculateRampBalances(): void {
+    for (const marker of this.markers) {
+      marker.data = this.dataModel.dataDTO.find( node => node.id === marker.id);
+      marker.content.inbound = {empty: 0, loadedActual: 0, loadedProjected: 0};
+      marker.content.outbound = {empty: 0, loadedActual: 0, loadedProjected: 0};
+      let outbound = 0;
+      let inbound = 0;
+      for (const connection of marker.data.data) {
+        inbound += connection.inbound.loadedActual;
+        inbound += connection.inbound.loadedProjected;
+        marker.content.inbound.loadedActual += connection.inbound.loadedActual;
+        marker.content.inbound.loadedProjected += connection.inbound.loadedProjected;
+        outbound += connection.outbound.loadedActual;
+        outbound += connection.outbound.loadedProjected;
+        marker.content.outbound.loadedActual += connection.outbound.loadedActual;
+        marker.content.outbound.loadedProjected += connection.outbound.loadedProjected;
+      }
+      marker.balance = inbound - outbound;
+      marker.label.text = (marker.balance > 0) ? `+${marker.balance.toString()}` : marker.balance.toString();
+      marker.icon = (marker.balance < 0) ? this.mIcon : this.mIcon2;
+    }
+    this.loadAllMarkers();
+  }
   onMarkerClick(marker, e): void {
     this.rampInfoService.shareData(marker.content);
     if (this.compRef) {
@@ -232,7 +257,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     this.infoWindow.setContent(div);
     this.infoWindow.open(this.map, marker);
     setTimeout(() => {
-      this.updateCurveMarker(marker, [this.markers[2], this.markers[3], this.markers[4]]);
+      this.updateCurveMarker(marker, [this.markers[1], this.markers[2], this.markers[3], this.markers[4]]);
     }, 500);
   }
 
@@ -347,10 +372,17 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   showDetails(): void {
     this.infoWindow.close();
     this.detailView = !this.detailView;
+
     setTimeout(() => {
       const scrollingElement = (document.scrollingElement || document.body);
       scrollingElement.scrollTop = scrollingElement.scrollHeight;
     }, 100);
+    setTimeout(() => {
+    for (const infowindow of this.laneInfowindows) {
+      console.log(infowindow);
+      infowindow.open(this.map);
+    }
+    }, 500);
 
   }
 
@@ -371,7 +403,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
 
   giveTotal(): void {
     this.repositionTotal = 0;
-    console.log(this.markers);
     for (const marker of this.markers) {
       if (marker.reposition !== '') {
         this.repositionTotal += parseInt(marker.reposition, 10);
@@ -384,12 +415,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   }
 
   updateCurveMarker(markerP1: any, connections: any[]): void {
+    this.laneBalances = [];
     if (this.curveMarkers) {
       for (const marker of this.curveMarkers) {
         marker.setMap(null);
       }
     }
     this.curveMarkers = [];
+    this.laneInfowindows = [];
     for (const connection of connections) {
       const Marker = google.maps.Marker;
       const Point = google.maps.Point;
@@ -398,8 +431,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       const projection = this.map.getProjection();
       const p1 = projection.fromLatLngToPoint(clickPoint);
       const p2 = projection.fromLatLngToPoint(pos2);
-
-      console.log(p1);
 
       // calculate offset
       const offsetX = (Math.abs(p1.x - p2.x) < 3) ? 0.6 : 1.3;
@@ -440,6 +471,19 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
         zIndex: 0,
         map: this.map
       });
+      const infowindow = new google.maps.InfoWindow({
+        content: this.getLaneWindowInfo(markerP1, connection)});
+      const midX = (p2.x);
+      const midY = (p2.y);
+      const e = new Point(p2.x + p1.x, p2.y + p1.y); // endpoint (p2 relative to p1)
+      const m = new Point(e.x / 2, e.y / 2); // midpoint
+      const o = new Point(m.y / 10, m.x / 10); // orthogonal
+      const c = new Point( // curve control point
+        m.x,
+        m.y - (this.curvature * o.y));
+      infowindow.setPosition(projection.fromPointToLatLng(c));
+      this.laneInfowindows.push(infowindow);
+
       const curveMarkerInbound = new Marker({
         position: newClickPoint,
         clickable: false,
@@ -464,14 +508,21 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       this.init(markerP1, connection);
     }
   }
-    init(markerP1, markerP2 ): void {
-      google.maps.event.addListener(this.map, 'projection_changed', this.updateCurveMarker);
-      google.maps.event.addListener(this.map, 'zoom_changed', this.updateCurveMarker);
+  init(markerP1, markerP2 ): void {
+    google.maps.event.addListener(this.map, 'projection_changed', this.updateCurveMarker);
+    google.maps.event.addListener(this.map, 'zoom_changed', this.updateCurveMarker);
 
-      google.maps.event.addListener(markerP1, 'position_changed', this.updateCurveMarker);
-      google.maps.event.addListener(markerP2, 'position_changed', this.updateCurveMarker);
-    }
-
+    google.maps.event.addListener(markerP1, 'position_changed', this.updateCurveMarker);
+    google.maps.event.addListener(markerP2, 'position_changed', this.updateCurveMarker);
+  }
+  getLaneWindowInfo(markerP1: any, connection: any): string {
+    const data = markerP1.data.data.find(dataPoint => dataPoint.id === connection.id);
+    const totalInbound = data.inbound.loadedActual + data.inbound.loadedProjected;
+    const totalOutound = data.outbound.loadedActual + data.outbound.loadedProjected;
+    const laneBalance = {id: connection.id, name: connection.content.igniteZoneRampName, inbound: totalInbound, outbound: totalOutound};
+    this.laneBalances.push(laneBalance);
+    return `Inbound ${totalInbound}, Outbound ${totalOutound}`;
+  }
   getPathDef(p1: any, p2: any, Point: any, curve): string {
     const e = new Point(p2.x - p1.x, p2.y - p1.y); // endpoint (p2 relative to p1)
     const m = new Point(e.x / 2, e.y / 2); // midpoint
@@ -479,9 +530,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     const c = new Point( // curve control point
       m.x + curve * o.x,
       m.y + curve * o.y);
-    this.newEnd = e;
     return 'M 0,0 ' +
       'q ' + c.x + ',' + c.y + ' ' + e.x + ',' + e.y;
   }
 }
 
+// const e = new Point(p2.x + p1.x, p2.y + p1.y); // endpoint (p2 relative to p1)
+// const m = new Point(e.x / 2, e.y / 2); // midpoint
+// const o = new Point(e.y / 10, e.x / 10); // orthogonal
+// const c = new Point( // curve control point
+//   m.x - (this.curvature * o.x),
+//   m.y - (this.curvature * o.y));
+// const mid = new Point(midX, midY);
+// infowindow.setPosition(projection.fromPointToLatLng(c));

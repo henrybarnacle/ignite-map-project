@@ -91,22 +91,22 @@
           <button (click)="displayReposition = false" class="reposition-button"><i class="pi pi-times"></i></button>
         </div>
       <p-scrollPanel [style]="{width: '100%', height: '50vh'}">
-        <div *ngFor="let marker of markers; let index = index" class="p-col-12 reposition-item">
-          <div class="reposition-item-location">{{marker.content.igniteZoneRampName}}</div>
+        <div *ngFor="let lane of laneBalances; let index = index" class="p-col-12 reposition-item">
+          <div class="reposition-item-location">{{lane.name}}</div>
           <div class="resposition-item-data">
-            <div class="resposition-item-datapoint">{{marker.content.emptyActualCount}}</div>
+            <div class="resposition-item-datapoint">{{lane.inbound}}</div>
             <div class="resposition-item-data-label">Inbound</div>
           </div>
           <div class="resposition-item-data">
-            <div class="resposition-item-datapoint">{{marker.content.emptyProjectedCount}}</div>
+            <div class="resposition-item-datapoint">{{lane.outbound}}</div>
             <div class="resposition-item-data-label">Outbound</div>
           </div>
           <div class="resposition-item-data">
-            <div class="resposition-item-datapoint">+{{marker.content.loadedprojectedCount}}</div>
+            <div class="resposition-item-datapoint">{{lane.inbound - lane.outbound}}</div>
             <div class="resposition-item-data-label">Balance</div>
           </div>
           <div class="resposition-item-data">
-            <div class="resposition-item-datapoint">{{marker.content.loadedActualCount}}</div>
+            <div class="resposition-item-datapoint">90</div>
             <div class="resposition-item-data-label">Recommend</div>
           </div>
 

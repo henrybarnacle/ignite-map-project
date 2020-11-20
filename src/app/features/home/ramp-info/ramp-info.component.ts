@@ -18,6 +18,7 @@ export class RampInfoComponent implements OnInit {
   ngOnInit(): void {
     this.rampInfoService.markerContent.subscribe(data => {
       this.data = data;
+      console.log(this.data);
     });
   }
 
