@@ -12,24 +12,25 @@ export class DetailsComponent implements OnInit {
   constructor() {
     // mock data
     this.data = {
-      labels: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'],
+      labels: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'],
+
 
       datasets: [
         {
-          label: 'First Dataset',
+          label: 'Outbound',
           lineTension: 0,
           borderColor: 'red',
           pointRadius: 0,
           fill: false,
-          data: [2000, 3000, 4000, 1000, 2000, 3000, 2000, 2000, 3000, 4000, 1000, 2000, 3000, 2000, 5000]
+          data: [836, 813, 867, 873, 836, 826, 843]
         },
         {
-          label: 'Second Dataset',
+          label: 'Inbound',
           lineTension: 0,
           borderColor: '#3CB371',
           pointRadius: 0,
           fill: false,
-          data: [1000, 2000, 1000, 3000, 4000, 2000, 1000, 1000, 2000, 1000, 3000, 4000, 2000, 1000, 5000]
+          data: [498, 426, 548, 298, 229, 405, 308]
         }
       ]
     };
