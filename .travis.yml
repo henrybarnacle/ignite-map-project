@@ -7,9 +7,6 @@ services:
 before_install:
   - docker build -t henrybarnacle/ignite-map-project -f Dockerfile.dev .
 
-script:
-  - docker run -e CI=true henrybarnacle/ignite-map-project npm run test
-
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
