@@ -239,6 +239,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       for (const connection of marker.data.data) {
         inbound += connection.inbound.loadedActual;
         inbound += connection.inbound.loadedProjected;
+        inbound += connection.inbound.empty;
         marker.content.inbound.loadedActual += connection.inbound.loadedActual;
         marker.content.inbound.loadedProjected += connection.inbound.loadedProjected;
         outbound += connection.outbound.loadedActual;
@@ -440,6 +441,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   submitExecution(): void {
     this.displayExecute = false;
     this.showSubmitButton = false;
+    this.dataModel.dataDTO[0].data[0].inbound.empty = 180;
     this.messageService.add({severity: 'success', summary: 'Success!', detail: 'Reposition Submitted', closable: false});
     setTimeout(() => {
       this.loadMap();
