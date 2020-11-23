@@ -7,13 +7,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RampInfoService {
   markerContent: BehaviorSubject<any>;
+  tableContent: BehaviorSubject<any>;
 
   constructor(private http: HttpClient) {
     this.markerContent = new BehaviorSubject<any>({});
+    this.tableContent = new BehaviorSubject<any>({});
   }
 
   shareData(markerContentData: any): void {
     this.markerContent.next(markerContentData);
+  }
+  setTableData(tableData: any): void {
+    this.tableContent.next(tableData);
   }
   loadRamps(): Observable<any> {
     const url = 'abc';

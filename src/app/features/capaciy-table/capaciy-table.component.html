@@ -1,18 +1,29 @@
-<p-table [value]="capacityData">
-  <ng-template pTemplate="header">
-    <tr>
-      <th>Empty Actual</th>
-      <th>Empty Projected</th>
-      <th>Loaded Actual</th>
-      <th>Loaded Projected</th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-ramp>
-    <tr>
-      <td>{{ramp.emptyActual}}</td>
-      <td>{{ramp.emptyProjected}}</td>
-      <td>{{ramp.loadedActual}}</td>
-      <td>{{ramp.loadedProjected}}</td>
-    </tr>
-  </ng-template>
-</p-table>
+<p-panel>
+  <p-table [value]="capacityData">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Area</th>
+        <th>Empty Actual</th>
+        <th>Loaded Actual</th>
+        <th>Loaded Projected</th>
+        <th>Empty Actual</th>
+        <th>Loaded Actual</th>
+        <th>Loaded Projected</th>
+        <th>Balance</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-ramp>
+      <tr>
+        <td>{{ramp.content.igniteZoneRampName}}</td>
+        <td>{{ramp.content.inbound.empty}}</td>
+        <td>{{ramp.content.inbound.loadedActual}}</td>
+        <td>{{ramp.content.inbound.loadedProjected}}</td>
+        <td>{{ramp.content.outbound.empty}}</td>
+        <td>{{ramp.content.outbound.loadedActual}}</td>
+        <td>{{ramp.content.outbound.loadedProjected}}</td>
+        <td>{{ramp.balance}}</td>
+
+      </tr>
+    </ng-template>
+  </p-table>
+</p-panel>

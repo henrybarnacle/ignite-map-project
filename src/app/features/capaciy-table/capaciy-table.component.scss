@@ -1,0 +1,10 @@
+::ng-deep p-table tr:nth-child(odd) {
+  background-color: white;
+}
+::ng-deep p-table {
+  font-size: 12px;
+}
+::ng-deep p-table th {
+  height:20px;
+  border-bottom: 1px solid whitesmoke;
+}

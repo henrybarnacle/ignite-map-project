@@ -24,9 +24,15 @@
   top: 10px;
   left: 50px;
 }
+.reposition-total-positive {
+  position: relative;
+  left: 50%;
+  color: #3CB371;
+}
 .reposition-total {
   position: relative;
   left: 50%;
+  color: black;
 }
 .button-size {
   font-size: 20px;
@@ -114,9 +120,10 @@
 .detail-section {
   background: whitesmoke;
   margin-top: 1%;
+  height: 25vh;
 }
 .map-detail {
-  height: 300px !important;
+  height: 600px !important;
 }
 
 .breadcrumb-text {
@@ -175,9 +182,16 @@
   position: relative;
   font-size: 24px;
   font-weight: bolder;
-  height:80px;
-  margin:15px;
+  margin: 18px;
   letter-spacing: 2.5px;
+}
+.reposition-subtitle {
+  position: relative;
+  color: grey;
+  font-size: 20px;
+  font-weight: bolder;
+  margin: 0 0 18px 18px;
+  letter-spacing: 1.75px;
 }
 .p-col-6 {
   width: 50%;
@@ -290,6 +304,7 @@
   margin: 10px 0 0 10px;
   padding: 5px 0 0 15px;
 }
+
 .execution-title {
   position: relative;
   font-size: 24px;
@@ -299,15 +314,44 @@
   letter-spacing: 2.5px;
   padding-top: 10px;
 }
+.execution-subtitle {
+  position: relative;
+  top: 10px;
+  color: grey;
+  font-size: 14px;
+  font-weight: bolder;
+  margin: 15px 0 15px 15px;
+  letter-spacing: 1.75px;
+}
 .execution-title-container {
   position: relative;
   top: 15px;
 }
+.execution-item {
+  padding-top: 10px;
+}
 .hr-spacer {
   position: relative;
   top: 15px;
+  width: 90%;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+}
+::ng-deep .ui-toast-message-success {
+  background: rgb(156, 235, 145);
+}
+::ng-deep .p-toast .p-toast-message {
+  background: rgb(156, 235, 145);
+}
+::ng-deep .p-toast .p-toast-message .p-toast-message-content {
+  background: rgb(156, 235, 145);
+}
+
+::ng-deep .p-toast .p-toast-message.p-toast-message-success {
+  background: #C8E6C9;
+  border: solid #439446;
+  border-width: 0 0 0 6px;
+  color: #224a23;
 }
 
 

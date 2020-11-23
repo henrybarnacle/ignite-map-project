@@ -1,25 +1,25 @@
-<div style="width:310px"><span style="padding-left:6%;font-size:22px;font-weight:bolder;float:left;width:80%">{{data.igniteZoneRampName}}</span>
-  <div class="data-figure-panel">
-    <div style="width:100%;padding-top:5px;font-size:16px">Inbound</div>
-    <div style="width:130px;padding-bottom:10px">
-      <div style="margin-top:5px;width:121px;background:#3CB371;height:2px;float:left"></div>
-      <div style="width:0;height:0;border-top:6px solid transparent;border-bottom: 6px solid transparent;border-left:9px solid #3CB371;float:right"></div>
-    </div>
-    <div class="data-label">Empty<div class="data-figure">{{data.inbound.empty}}</div></div>
-    <div class="data-label">Loaded Actual<div class="data-figure">{{data.inbound.loadedActual}}</div></div>
-    <div class="data-label">Loaded Projected<div class="data-figure">{{data.inbound.loadedProjected}}</div></div>
-    <div class="total-label">Total {{data.inbound.loadedActual + data.inbound.loadedProjected}}</div>
+<div style="width:310px"><span *ngIf="!detailsView" style="padding-left:6%;font-size:22px;font-weight:bolder;float:left;width:80%">{{data.igniteZoneRampName}}</span>
+  <div [ngClass]="{'detail-data-figure-panel': detailsView, 'data-figure-panel': !detailsView}">
+    <div [ngClass]="{'detail-data-subtitle': detailsView, 'data-subtitle': !detailsView}">Inbound</div>
+<!--    <div style="width:130px;padding-bottom:10px">-->
+<!--      <div style="margin-top:5px;width:121px;background:#3CB371;height:2px;float:left"></div>-->
+<!--      <div style="width:0;height:0;border-top:6px solid transparent;border-bottom: 6px solid transparent;border-left:9px solid #3CB371;float:right"></div>-->
+<!--    </div>-->
+    <div [ngClass]="{'data-label': !detailsView, 'detail-data-label': detailsView}">Empty<div class="data-figure">{{data.inbound.empty}}</div></div>
+    <div [ngClass]="{'data-label': !detailsView, 'detail-data-label': detailsView}">Loaded Actual<div class="data-figure">{{data.inbound.loadedActual}}</div></div>
+    <div [ngClass]="{'data-label': !detailsView, 'detail-data-label': detailsView}">Loaded Projected<div class="data-figure">{{data.inbound.loadedProjected}}</div></div>
+    <div [ngClass]="{'total-label': !detailsView, 'total-label-detail': detailsView}">Total {{data.inbound.loadedActual + data.inbound.loadedProjected}}</div>
   </div>
-  <div class="data-figure-panel">
-    <div style="width:100%;padding-top:5px;font-size:16px">Outbound</div>
-    <div style="width:130px;padding-bottom:10px">
-      <div style="margin-top:5px;width:121px;background:#E80000;height:2px;float:left"></div>
-      <div style="width:0;height:0;border-top:6px solid transparent;border-bottom: 6px solid transparent;border-left:9px solid #E80000;float:right"></div>
-    </div>
-    <div class="data-label">Empty<div class="data-figure">{{data.outbound.empty}}</div></div>
-    <div class="data-label">Loaded Actual<div class="data-figure">{{data.outbound.loadedActual}}</div></div>
-    <div class="data-label">Loaded Projected<div class="data-figure">{{data.outbound.loadedProjected}}</div></div>
-    <div class="total-label">Total {{data.outbound.loadedActual + data.outbound.loadedProjected}}</div>
+  <div [ngClass]="{'detail-data-figure-panel': detailsView, 'data-figure-panel': !detailsView}">
+    <div [ngClass]="{'detail-data-subtitle': detailsView, 'data-subtitle': !detailsView}">Outbound</div>
+<!--    <div style="width:130px;padding-bottom:10px">-->
+<!--      <div style="margin-top:5px;width:121px;background:#E80000;height:2px;float:left"></div>-->
+<!--      <div style="width:0;height:0;border-top:6px solid transparent;border-bottom: 6px solid transparent;border-left:9px solid #E80000;float:right"></div>-->
+<!--    </div>-->
+    <div [ngClass]="{'data-label': !detailsView, 'detail-data-label': detailsView}">Empty<div class="data-figure">{{data.outbound.empty}}</div></div>
+    <div [ngClass]="{'data-label': !detailsView, 'detail-data-label': detailsView}">Loaded Actual<div class="data-figure">{{data.outbound.loadedActual}}</div></div>
+    <div [ngClass]="{'data-label': !detailsView, 'detail-data-label': detailsView}">Loaded Projected<div class="data-figure">{{data.outbound.loadedProjected}}</div></div>
+    <div [ngClass]="{'total-label': !detailsView, 'total-label-detail': detailsView}">Total {{data.outbound.loadedActual + data.outbound.loadedProjected}}</div>
   </div>
   <span *ngIf="!detailsView" style="float:right;padding-right:2%"><button class="details-button" onclick="Window.homeComponent.showDetails()">Details</button></span>
   <span *ngIf="detailsView" style="float:right;padding-right:2%"><button class="reposition-button" (click)="showReposition($event)">Reposition</button></span>

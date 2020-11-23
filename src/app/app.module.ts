@@ -18,6 +18,9 @@ import { ButtonModule } from 'primeng/button';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { HttpClientModule } from '@angular/common/http';
 import { CapaciyTableComponent } from './features/capaciy-table/capaciy-table.component';
+import { ToastModule } from 'primeng/toast';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
 
 
 @NgModule({
@@ -44,7 +47,10 @@ import { CapaciyTableComponent } from './features/capaciy-table/capaciy-table.co
     AccordionModule,
     ButtonModule,
     ScrollPanelModule,
-    TableModule
+    TableModule,
+    ToastModule,
+    MessageModule,
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
