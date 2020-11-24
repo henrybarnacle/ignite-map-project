@@ -337,14 +337,11 @@
   margin-top: 20px;
   margin-bottom: 30px;
 }
-::ng-deep .ui-toast-message-success {
-  background: rgb(156, 235, 145);
-}
 ::ng-deep .p-toast .p-toast-message.p-toast-message-success {
   background: white;
-  border: solid #439446;
+  border: solid #3CB371;
   border-width: 0 0 0 6px;
-  color: #439446;
+  color: #3CB371;
 }
 ::ng-deep .p-toast .p-toast-message.p-toast-message-info {
   background: white;

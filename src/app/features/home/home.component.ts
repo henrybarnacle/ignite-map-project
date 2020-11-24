@@ -425,13 +425,18 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   }
 
   onShowPositionRequest(event): void {
+    const top = this.laneBalances.splice(2, 1);
+    this.laneBalances.unshift(top[0]);
+    for (const lane of this.laneBalances) {
+      lane.recommend = 0;
+    }
+    this.laneBalances[0].recommend = Math.abs(this.selected.balance);
     this.displayReposition = true;
   }
 
   onShowExecuteRequest(event): void {
     this.displayExecute = true;
   }
-
 
   closeDetailView(): void {
     this.detailView = false;

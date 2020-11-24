@@ -90,7 +90,7 @@
         <div class="p-col-6">
           <button (click)="displayReposition = false" class="reposition-button"><i class="pi pi-times"></i></button>
         </div>
-      <h2 class="reposition-subtitle">{{selected?.content.igniteZoneRampName}} fix defecit {{selectedBalance}}</h2>
+      <h2 class="reposition-subtitle">{{selected?.content.igniteZoneRampName}} {{selectedBalance}}</h2>
 
       <p-scrollPanel [style]="{width: '100%', height: '45vh'}">
         <div *ngFor="let lane of laneBalances; let index = index" class="p-col-12 reposition-item">
@@ -108,7 +108,7 @@
             <div class="resposition-item-data-label">Balance</div>
           </div>
           <div class="resposition-item-data">
-            <div class="resposition-item-datapoint">90</div>
+            <div class="resposition-item-datapoint">{{lane.recommend}}</div>
             <div class="resposition-item-data-label">Recommend</div>
           </div>
 
