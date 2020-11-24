@@ -340,18 +340,17 @@
 ::ng-deep .ui-toast-message-success {
   background: rgb(156, 235, 145);
 }
-::ng-deep .p-toast .p-toast-message {
-  background: rgb(156, 235, 145);
-}
-::ng-deep .p-toast .p-toast-message .p-toast-message-content {
-  background: rgb(156, 235, 145);
-}
-
 ::ng-deep .p-toast .p-toast-message.p-toast-message-success {
-  background: #C8E6C9;
+  background: white;
   border: solid #439446;
   border-width: 0 0 0 6px;
-  color: #224a23;
+  color: #439446;
+}
+::ng-deep .p-toast .p-toast-message.p-toast-message-info {
+  background: white;
+  border: solid #007DBA;
+  border-width: 0 0 0 6px;
+  color: #007DBA;
 }
 
 

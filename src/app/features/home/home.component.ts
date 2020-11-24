@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   selected: any;
   selectedBalance: number;
   timeDate: Date;
-  msgs = [];
+  moves = [];
 
   mIcon = {
     path: google.maps.SymbolPath.CIRCLE,
@@ -186,6 +186,23 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       icon: this.mIcon2,
       label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
         text: '+120'}
+    },
+    {
+      position: new google.maps.LatLng(38.775324, -94.578076),
+      map: this.map,
+      title: 'Kansas City',
+      id : 8,
+      balance: 0,
+      data: {id: '', data: []},
+      reposition: '',
+      content: {
+        igniteZoneRampName: 'Kansas City',
+        inbound: {empty: 0, loadedActual: 112, loadedProjected: 0},
+        outbound: {empty: 0, loadedActual: 224, loadedProjected: 0}
+      },
+      icon: this.mIcon2,
+      label: {color: '#FFF', fontSize: '13px', fontWeight: '450', letterSpacing: '2px',
+        text: '+120'}
     }
   ];
 
@@ -208,10 +225,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   }
 
   ngAfterViewInit(): void {
-    this.loadMap();
+    this.loadMap(true);
   }
 
-  loadMap(): void {
+  loadMap(getData: boolean): void {
     const mapProperties: any = {
       center: new google.maps.LatLng(39.468739, -98.950631),
       zoom: 4.5,
@@ -225,13 +242,22 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     // subscribe to http call to get ramps, save ramps in model
     //  this.rampInfoService.loadRamps();
     // this.dataModel.ramps
-    this.calculateRampBalances();
+    this.getRampData(getData);
     this.setRegions();
+  }
+
+  getRampData(getData: boolean): void {
+    if (getData) {
+      for (const marker of this.markers) {
+        marker.data = this.dataModel.dataDTO.find(node => node.id === marker.id);
+      }
+    }
+    this.calculateRampBalances();
   }
 
   calculateRampBalances(): void {
     for (const marker of this.markers) {
-      marker.data = this.dataModel.dataDTO.find( node => node.id === marker.id);
+     // marker.data = this.dataModel.dataDTO.find( node => node.id === marker.id);
       marker.content.inbound = {empty: 0, loadedActual: 0, loadedProjected: 0};
       marker.content.outbound = {empty: 0, loadedActual: 0, loadedProjected: 0};
       let outbound = 0;
@@ -284,7 +310,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     this.tableView = false;
     this.mapView = true;
     setTimeout(() => {
-      this.loadMap();
+      this.loadMap(false);
     }, 1000);
   }
 
@@ -393,11 +419,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     }, 100);
     setTimeout(() => {
     for (const infowindow of this.laneInfowindows) {
-      console.log(infowindow);
       infowindow.open(this.map);
     }
     }, 500);
-
   }
 
   onShowPositionRequest(event): void {
@@ -424,28 +448,34 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     }
   }
   saveReposition(): void {
-    this.showSubmitButton = true;
     for (const lane of this.laneBalances) {
       if (lane.reposition !== '') {
         for (const marker of this.markers) {
           if (marker.id === lane.id) {
             marker.reposition = lane.reposition;
+            const index = marker.data.data.findIndex(dataPoint => dataPoint.id === this.selected.id);
+            marker.data.data[index].outbound.loadedProjected  += parseInt(lane.reposition, 10);
+            const selectedIndex = this.selected.data.data.findIndex(dataPoint => dataPoint.id === lane.id);
+            this.selected.data.data[selectedIndex].inbound.empty += parseInt(lane.reposition, 10);
+            const move = {outbound: lane.name, inbound: this.selected.content.igniteZoneRampName, amount: lane.reposition};
+            this.moves.push(move);
           }
         }
       }
     }
     this.repositionTotal = 0;
     this.closeDetailView();
+    this.messageService.add({severity: 'info', summary: 'info', detail: 'Reposition saved', closable: false});
+    setTimeout(() => {
+      this.loadMap(false);
+      this.showSubmitButton = true;
+    }, 3500);
   }
 
   submitExecution(): void {
     this.displayExecute = false;
     this.showSubmitButton = false;
-    this.dataModel.dataDTO[0].data[0].inbound.empty = 180;
     this.messageService.add({severity: 'success', summary: 'Success!', detail: 'Reposition Submitted', closable: false});
-    setTimeout(() => {
-      this.loadMap();
-    }, 3000);
   }
 
   updateCurveMarker(markerP1: any, connections: any[]): void {
@@ -552,28 +582,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       infowindow.setPosition(projection.fromPointToLatLng(c2));
       this.laneInfowindows.push(infowindow);
       this.init(markerP1, connection);
-      // setTimeout(() => {
-
-      //   const e = new Point(p2.x - p1.x, p2.y - p1.y); // endpoint (p2 relative to p1)
-      //   const m = new Point(e.x / 2, e.y / 2); // midpoint
-      //   const o = new Point(e.y, -e.x); // orthogonal
-      //   const c = new Point( // curve control point
-      //     m.x  + this.curvature * o.x,
-      //     m.y + this.curvature * o.y);
-      //   const c2 = new Point(
-      //     c.x + p1.x - this.curvature * o.x * 0.5,
-      //     c.y + p1.y - this.curvature * o.y * 0.5
-      //   );
-      //   infowindow.setPosition(projection.fromPointToLatLng(c2));
-      //   this.laneInfowindows.push(infowindow);
-      // }, 3000);
-
     }
   }
   init(markerP1, markerP2 ): void {
     google.maps.event.addListener(this.map, 'projection_changed', this.updateCurveMarker);
     google.maps.event.addListener(this.map, 'zoom_changed', this.updateCurveMarker);
-
     google.maps.event.addListener(markerP1, 'position_changed', this.updateCurveMarker);
     google.maps.event.addListener(markerP2, 'position_changed', this.updateCurveMarker);
   }
@@ -581,7 +594,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
     const data = markerP1.data.data.find(dataPoint => dataPoint.id === connection.id);
     const totalInbound = data.inbound.loadedActual + data.inbound.loadedProjected;
     const totalOutound = data.outbound.loadedActual + data.outbound.loadedProjected;
-    const laneBalance = {id: connection.id,
+    const laneBalance = {
+      id: connection.id,
       name: connection.content.igniteZoneRampName,
       inbound: totalInbound,
       outbound: totalOutound,
@@ -601,12 +615,3 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
       'q ' + c.x + ',' + c.y + ' ' + e.x + ',' + e.y;
   }
 }
-
-// const e = new Point(p2.x + p1.x, p2.y + p1.y); // endpoint (p2 relative to p1)
-// const m = new Point(e.x / 2, e.y / 2); // midpoint
-// const o = new Point(e.y / 10, e.x / 10); // orthogonal
-// const c = new Point( // curve control point
-//   m.x - (this.curvature * o.x),
-//   m.y - (this.curvature * o.y));
-// const mid = new Point(midX, midY);
-// infowindow.setPosition(projection.fromPointToLatLng(c));

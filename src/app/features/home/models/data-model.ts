@@ -551,9 +551,87 @@ export class DataModel {
               loadedActual: 322,
               loadedProjected: 320
             }
-          },
+          }
         ]
       },
+      {
+        id: 8,
+        data: [
+          {
+            id: 1,
+            inbound: {
+              empty: 0,
+              loadedActual: 500,
+              loadedProjected: 510
+            },
+            outbound: {
+              empty: 0,
+              loadedActual: 501,
+              loadedProjected: 400
+            }
+          }, {
+            id: 2,
+            inbound: {
+              empty: 0,
+              loadedActual: 541,
+              loadedProjected: 544
+            },
+            outbound: {
+              empty: 0,
+              loadedActual: 343,
+              loadedProjected: 344
+            }
+          }, {
+            id: 3,
+            inbound: {
+              empty: 0,
+              loadedActual: 110,
+              loadedProjected: 100
+            },
+            outbound: {
+              empty: 0,
+              loadedActual: 276,
+              loadedProjected: 270
+            }
+          }, {
+            id: 4,
+            inbound: {
+              empty: 0,
+              loadedActual: 340,
+              loadedProjected: 355
+            },
+            outbound: {
+              empty: 0,
+              loadedActual: 376,
+              loadedProjected: 387
+            }
+          }, {
+            id: 5,
+            inbound: {
+              empty: 0,
+              loadedActual: 140,
+              loadedProjected: 120
+            },
+            outbound: {
+              empty: 0,
+              loadedActual: 189,
+              loadedProjected: 188
+            }
+          }, {
+            id: 6,
+            inbound: {
+              empty: 0,
+              loadedActual: 110,
+              loadedProjected: 130
+            },
+            outbound: {
+              empty: 0,
+              loadedActual: 322,
+              loadedProjected: 320
+            }
+          }
+        ]
+      }
     ];
   }
   // mIcon = {
