@@ -222,6 +222,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy{
   ngOnInit(): void {
     this.timeDate = new Date();
     this.mapView = true;
+    this.rampInfoService.loadRamps().subscribe( data => {
+      console.log(data);
+    });
   }
 
   ngAfterViewInit(): void {
