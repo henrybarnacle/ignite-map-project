@@ -9,6 +9,5 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - /ignite-map-project/node_modules
-      - .:/ignite-map-project
-
+      - /app/node_modules
+      - .:/app
